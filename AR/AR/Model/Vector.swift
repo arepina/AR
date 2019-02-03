@@ -13,7 +13,9 @@ import SceneKit
 struct Vector : Hashable {
     public var x: Scalar
     public var y: Scalar
+    public static let zero = Vector(0, 0)
     public static let x = Vector(1, 0)
+    public static let y = Vector(0, 1)
     
     public var hashValue: Int {
         return x.hashValue &+ y.hashValue
@@ -67,6 +69,10 @@ struct Vector : Hashable {
         return atan2(cross, dot)
     }
     
+    public static prefix func -(v: Vector) -> Vector {
+        return Vector(-v.x, -v.y)
+    }
+    
     public static func +(lhs: Vector, rhs: Vector) -> Vector {
         return Vector(lhs.x + rhs.x, lhs.y + rhs.y)
     }
@@ -83,7 +89,19 @@ struct Vector : Hashable {
         return Vector(lhs.x * rhs, lhs.y * rhs)
     }
     
+    public static func /(lhs: Vector, rhs: Vector) -> Vector {
+        return Vector(lhs.x / rhs.x, lhs.y / rhs.y)
+    }
+    
     public static func /(lhs: Vector, rhs: Scalar) -> Vector {
         return Vector(lhs.x / rhs, lhs.y / rhs)
+    }
+    
+    public static func ==(lhs: Vector, rhs: Vector) -> Bool {
+        return lhs.x == rhs.x && lhs.y == rhs.y
+    }
+    
+    public static func ~=(lhs: Vector, rhs: Vector) -> Bool {
+        return lhs.x ~= rhs.x && lhs.y ~= rhs.y
     }
 }

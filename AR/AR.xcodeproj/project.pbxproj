@@ -27,7 +27,6 @@
 		5D29BD5321B5812800C8D4B0 /* MKRouteStep+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD5221B5812800C8D4B0 /* MKRouteStep+Extension.swift */; };
 		5D29BD5521B5814B00C8D4B0 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD5421B5814B00C8D4B0 /* PointOfInterest.swift */; };
 		5D29BD5721B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD5621B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift */; };
-		5D29BD5921B584DB00C8D4B0 /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD5821B584DB00C8D4B0 /* CLLocation+Extension.swift */; };
 		5D2A38E121B7DCA9002CEF19 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A38E021B7DCA9002CEF19 /* NavigationService.swift */; };
 		5D2AAD0321A29FFC00B9A4ED /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2AAD0221A29FFC00B9A4ED /* SettingsViewController.swift */; };
 		5D2AAD0721A2A15000B9A4ED /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2AAD0621A2A15000B9A4ED /* RoutesViewController.swift */; };
@@ -36,12 +35,11 @@
 		5D36D96021FC82EA002E5345 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D36D95E21FC82EA002E5345 /* MainInterface.storyboard */; };
 		5D36D96421FC82EA002E5345 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5D36D95821FC82EA002E5345 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5D37A4842201B4740052E772 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37A4832201B4740052E772 /* CGPoint+Extension.swift */; };
-		5D37A4862201B5C40052E772 /* ExtraNavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37A4852201B5C40052E772 /* ExtraNavigationService.swift */; };
 		5D37A4882201DA060052E772 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37A4872201DA060052E772 /* Vector.swift */; };
 		5D37A4902201DB020052E772 /* CGLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37A48F2201DB020052E772 /* CGLine.swift */; };
 		5D37A4922201F4D30052E772 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37A4912201F4D20052E772 /* Array+Extension.swift */; };
 		5D37A494220204530052E772 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37A493220204530052E772 /* Step.swift */; };
-		5D37A4962202046E0052E772 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37A4952202046E0052E772 /* Animation.swift */; };
+		5D37A4962202046E0052E772 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D37A4952202046E0052E772 /* Leg.swift */; };
 		5D4410D121AC0C9000F893D4 /* RoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4410D021AC0C9000F893D4 /* RoutesTableViewCell.swift */; };
 		5D4410D321AC126100F893D4 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4410D221AC126100F893D4 /* FirebaseService.swift */; };
 		5D53BC3F21FF22580057E2D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D53BC3E21FF22580057E2D5 /* UIApplication+Extension.swift */; };
@@ -102,7 +100,6 @@
 		5D29BD5221B5812800C8D4B0 /* MKRouteStep+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKRouteStep+Extension.swift"; sourceTree = "<group>"; };
 		5D29BD5421B5814B00C8D4B0 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
 		5D29BD5621B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
-		5D29BD5821B584DB00C8D4B0 /* CLLocation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
 		5D2A38E021B7DCA9002CEF19 /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		5D2AAD0221A29FFC00B9A4ED /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5D2AAD0621A2A15000B9A4ED /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
@@ -114,12 +111,11 @@
 		5D36D96921FC8A12002E5345 /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widget.entitlements; sourceTree = "<group>"; };
 		5D36D96A21FC8A43002E5345 /* AR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AR.entitlements; sourceTree = "<group>"; };
 		5D37A4832201B4740052E772 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
-		5D37A4852201B5C40052E772 /* ExtraNavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraNavigationService.swift; sourceTree = "<group>"; };
 		5D37A4872201DA060052E772 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		5D37A48F2201DB020052E772 /* CGLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGLine.swift; sourceTree = "<group>"; };
 		5D37A4912201F4D20052E772 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		5D37A493220204530052E772 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
-		5D37A4952202046E0052E772 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		5D37A4952202046E0052E772 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
 		5D4410D021AC0C9000F893D4 /* RoutesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewCell.swift; sourceTree = "<group>"; };
 		5D4410D221AC126100F893D4 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		5D53BC3E21FF22580057E2D5 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -171,7 +167,6 @@
 				5D29BD4E21B563C500C8D4B0 /* FloatingPoint+Extension.swift */,
 				5D29BD5221B5812800C8D4B0 /* MKRouteStep+Extension.swift */,
 				5D29BD5621B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift */,
-				5D29BD5821B584DB00C8D4B0 /* CLLocation+Extension.swift */,
 				5DA7C8F421C665F200ADEB36 /* String+Extension.swift */,
 				5D53BC3E21FF22580057E2D5 /* UIApplication+Extension.swift */,
 				5D37A4832201B4740052E772 /* CGPoint+Extension.swift */,
@@ -217,7 +212,7 @@
 				5D37A4872201DA060052E772 /* Vector.swift */,
 				5D37A48F2201DB020052E772 /* CGLine.swift */,
 				5D37A493220204530052E772 /* Step.swift */,
-				5D37A4952202046E0052E772 /* Animation.swift */,
+				5D37A4952202046E0052E772 /* Leg.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,7 +224,6 @@
 				5D1F126221AD3E0B007491F8 /* ConnectionService.swift */,
 				5D4410D221AC126100F893D4 /* FirebaseService.swift */,
 				5DCF24DA21BAAFB2002E8C6B /* ObjectsService.swift */,
-				5D37A4852201B5C40052E772 /* ExtraNavigationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -540,7 +534,6 @@
 				5D37A4922201F4D30052E772 /* Array+Extension.swift in Sources */,
 				5D29BD5121B566ED00C8D4B0 /* Matrix.swift in Sources */,
 				5D4410D321AC126100F893D4 /* FirebaseService.swift in Sources */,
-				5D29BD5921B584DB00C8D4B0 /* CLLocation+Extension.swift in Sources */,
 				5D264AEB21AEA53D00C9CE02 /* SettingsWalkthroughPageViewController.swift in Sources */,
 				5D8266432192F35500B7DF0F /* LoginViewController.swift in Sources */,
 				5DA7C8F521C665F200ADEB36 /* String+Extension.swift in Sources */,
@@ -555,7 +548,7 @@
 				5D37A4842201B4740052E772 /* CGPoint+Extension.swift in Sources */,
 				5D24C40621B29C160067DF7F /* UIViewController+Extension.swift in Sources */,
 				5D37A4882201DA060052E772 /* Vector.swift in Sources */,
-				5D37A4962202046E0052E772 /* Animation.swift in Sources */,
+				5D37A4962202046E0052E772 /* Leg.swift in Sources */,
 				5D24C40121B28CF30067DF7F /* ARNode.swift in Sources */,
 				5D29215321AD9F2800836302 /* Route.swift in Sources */,
 				5D29BD4F21B563C500C8D4B0 /* FloatingPoint+Extension.swift in Sources */,
@@ -565,7 +558,6 @@
 				5D2A38E121B7DCA9002CEF19 /* NavigationService.swift in Sources */,
 				5D29BD5521B5814B00C8D4B0 /* PointOfInterest.swift in Sources */,
 				5DCF24DD21BAAFFA002E8C6B /* Object.swift in Sources */,
-				5D37A4862201B5C40052E772 /* ExtraNavigationService.swift in Sources */,
 				5D264AED21AEA87200C9CE02 /* SettingsWalkthoughContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

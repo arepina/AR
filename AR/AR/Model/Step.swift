@@ -10,18 +10,9 @@ import Foundation
 import SceneKit
 
 struct Step {
-    let start: CGPoint
-    let end: CGPoint
-    let length: CGFloat
+    let point: CGPoint
     
-    init(start: CGPoint, end: CGPoint) {
-        assert(start != end)
-        self.start = start
-        self.end = end
-        self.length = start.distance(to: end)
-    }
-    
-    var vec: Vector {
-        return Vector(end) - Vector(start)
+    init(point: CGPoint) {
+        self.point = point
     }
 }

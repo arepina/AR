@@ -188,24 +188,6 @@
                                     <constraint firstAttribute="width" constant="32" id="XKi-yW-aVE"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="center" fixedFrame="YES" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ttc-SY-wHT">
-                                <rect key="frame" x="101" y="557" width="172" height="53.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intermediate points on" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoK-Ok-d0o">
-                                        <rect key="frame" x="0.0" y="0.0" width="172" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mPa-pq-X44">
-                                        <rect key="frame" x="61.5" y="22.5" width="51" height="31"/>
-                                        <connections>
-                                            <action selector="algoChanged:" destination="RhS-nh-a7z" eventType="valueChanged" id="RWu-WH-wNC"/>
-                                        </connections>
-                                    </switch>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -258,13 +240,10 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="algoChanger" destination="mPa-pq-X44" id="FmC-ak-APH"/>
                         <outlet property="buttons" destination="QOB-De-7Qt" id="AC3-3b-Th4"/>
                         <outlet property="map" destination="xmm-lo-nvL" id="5Jk-tH-Rud"/>
                         <outlet property="museumBtn" destination="hGA-OT-H3W" id="11B-wU-b9C"/>
                         <outlet property="sceneView" destination="U0s-TX-04Z" id="P6I-QD-FmS"/>
-                        <outlet property="switchAlgo" destination="FoK-Ok-d0o" id="BHB-A4-Py9"/>
-                        <outlet property="switcher" destination="ttc-SY-wHT" id="qEQ-1e-fei"/>
                         <outlet property="theaterBtn" destination="1f3-MQ-i4v" id="bnk-nz-Gbq"/>
                         <segue destination="W3L-WY-07b" kind="show" identifier="FavoriteNow" id="5Zg-9u-bmO"/>
                     </connections>

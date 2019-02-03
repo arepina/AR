@@ -43,12 +43,25 @@ extension CLLocationCoordinate2D : Equatable{
         return CLLocationCoordinate2D(latitude: lat2.toDegrees(), longitude: lon2.toDegrees())
     }
     
+    // Calculate the (initial) bearing between two points, in degrees
+    static func bearingToLocation(startLocation: CLLocation, destinationLocation: CLLocation) -> Double {
+        let lat1 = startLocation.coordinate.latitude.toRadians()
+        let lon1 = startLocation.coordinate.longitude.toRadians()
+        let lat2 = destinationLocation.coordinate.latitude.toRadians()
+        let lon2 = destinationLocation.coordinate.longitude.toRadians()
+        let dLon = lon2 - lon1
+        let y = sin(dLon) * cos(lat2);
+        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon);
+        let radiansBearing = atan2(y, x)
+        return radiansBearing
+    }
+    
     // Calculate the destination point from given point having travelled the given distance, on the given initial bearing
     static func getIntermediaryLocations(currentLocation: CLLocation, destinationLocation: CLLocation) -> [CLLocationCoordinate2D] {
         var distances = [CLLocationCoordinate2D]()
-        let metersIntervalPerNode: Float = 10
+        let metersIntervalPerNode: Float = 5
         var distance = Float(destinationLocation.distance(from: currentLocation))
-        let bearing = currentLocation.bearingToLocation(destinationLocation) // The bearing help to create a rotation transformation to position destinationLocation in the right direction at the currentLocation distance
+        let bearing = bearingToLocation(startLocation: currentLocation, destinationLocation: destinationLocation) // The bearing help to create a rotation transformation to position destinationLocation in the right direction at the currentLocation distance
         while distance > metersIntervalPerNode {
             distance -= metersIntervalPerNode
             let newLocation = currentLocation.coordinate.destinationCalculation(with: Double(bearing), and: Double(distance))

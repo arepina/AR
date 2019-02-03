@@ -48,39 +48,28 @@ class ARNode: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func arrow() -> SCNGeometry {
-        let red = SCNMaterial()
-        red.diffuse.contents = UIColor.red
-        return ARSCNArrowGeometry(material: red)
-    }
-    
-    //Basic sphere graphic
-    func createSphereNode(with radius: CGFloat, color: UIColor) -> SCNNode {
+    func createNode(with radius: CGFloat, color: UIColor) -> SCNGeometry {
         let material = SCNMaterial()
         material.diffuse.contents = color
         material.lightingModel = .constant
-        let arrow =  ARSCNArrowGeometry(material: material)
-        let node = SCNNode(geometry: arrow)
-        return node
+        return ARSCNArrowGeometry(material: material)
     }
     
-    //Add graphic as child node - basic
-    func addSphere(with radius: CGFloat, and color: UIColor) {
-        let sphereNode = createSphereNode(with: radius, color: color)
-        addChildNode(sphereNode)
+    func addNodeIntermeditary(with radius: CGFloat, and color: UIColor) {
+        let node = SCNNode(geometry: createNode(with: radius, color: color))
+        addChildNode(node)
     }
     
-    //Add graphic as child node - with text
-    func addNode(with radius: CGFloat, and color: UIColor, and text: String) {
-        let sphereNode = createSphereNode(with: radius, color: color)
+    func addNodeMain(with radius: CGFloat, and color: UIColor, and text: String) {
+        let node = SCNNode(geometry: createNode(with: radius, color: color))
         let newText = SCNText(string: title, extrusionDepth: 0.05)
         newText.font = UIFont (name: "AvenirNext-Medium", size: 1)
         newText.firstMaterial?.diffuse.contents = UIColor.red
         let _textNode = SCNNode(geometry: newText)
         let annotationNode = SCNNode()
         annotationNode.addChildNode(_textNode)
-        annotationNode.position = sphereNode.position
-        addChildNode(sphereNode)
+        annotationNode.position = node.position
+        addChildNode(node)
         addChildNode(annotationNode)
     }
 }

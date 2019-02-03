@@ -9,9 +9,9 @@
 import Foundation
 import SceneKit
 
-struct Animation {
+struct Leg {
     var steps: [Step]
     var points: [CGPoint] {
-        return steps.map { [$0.start, $0.end] }.flatMap { $0 }
+        return steps.map { [$0.point] }.flatMap { $0 }
     }
 }

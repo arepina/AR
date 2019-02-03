@@ -160,5 +160,19 @@
       <ContextState
          contextName = "MapViewController.loadObjects():MapViewController.swift">
       </ContextState>
+      <ContextState
+         contextName = "static ExtraNavigationService.divideRoute(route:):ExtraNavigationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "step">
+            </PersistentString>
+            <PersistentString
+               value = "offsetInLeg + CGFloat(5.0)">
+            </PersistentString>
+            <PersistentString
+               value = "legs">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

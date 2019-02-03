@@ -22,11 +22,8 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     @IBOutlet var museumBtn: UIButton! // museum btn
     @IBOutlet var theaterBtn: UIButton! // theater btn
     @IBOutlet var buttons: UIStackView!// buttons view
-    @IBOutlet var switcher: UIStackView! // switcher view
     @IBOutlet var sceneView: SceneLocationView! // AR view
     @IBOutlet var map: MKMapView! // map view
-    @IBOutlet var switchAlgo: UILabel! // algo name
-    @IBOutlet var algoChanger: UISwitch! // algo switch
     var press: UILongPressGestureRecognizer! // user tap
     var navigationService = NavigationService() // navigation service
     let configuration = ARWorldTrackingConfiguration() // AR configuration
@@ -56,8 +53,6 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
         super.viewDidLoad()
         if ARConfiguration.isSupported {
             isFirst = true
-            algoChanger.tintColor = .red // the "off" color
-            algoChanger.onTintColor = .green // the "on" color
             initAR()
             initSearch()
             initMap()
@@ -70,10 +65,10 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
                     let region = MKCoordinateRegion(center: SwiftLocation.Locator.currentLocation!.coordinate, span: span)
                     self.map.setRegion(region, animated: true)
                 }
-                if loc.horizontalAccuracy <= 65.0 { // The radius of uncertainty for the current location, measured in meters
-                    self.navigationService.updatedLocations.append(loc)
-                    self.navigationService.updateNodes(nodes: self.nodes)
-                }
+//                if loc.horizontalAccuracy <= 65.0 { // The radius of uncertainty for the current location, measured in meters
+//                    self.navigationService.updatedLocations.append(loc)
+//                    self.navigationService.updateNodes(nodes: self.nodes)
+//                }
             }, onFail: {err, last in
                 print("Failed with error: \(err)")
             })
@@ -94,14 +89,6 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     
     @IBAction func menuClick(_ sender: Any) {
         performSegue(withIdentifier: "openMenu", sender: nil)
-    }
-    
-    @IBAction func algoChanged(_ sender: Any) {
-        if (algoChanger.isOn){ // my AR
-            switchAlgo.text = "Intermediate points on"
-        }else{ // yandex AR
-            switchAlgo.text = "Animation on"
-        }
     }
     
     func clear(){
@@ -323,7 +310,6 @@ extension MapViewController {
         view.addSubview(sceneView)
         view.addSubview(map)
         view.addSubview(buttons)
-        view.addSubview(switcher)
     }
     
     override func viewDidLayoutSubviews() {
@@ -334,11 +320,6 @@ extension MapViewController {
             y: self.view.frame.size.height / 2 + 10,
             width: 50,
             height: 180)
-        switcher.frame = CGRect(
-            x: self.view.frame.size.width  / 2 - 100,
-            y: self.view.frame.size.height - 70,
-            width: 200,
-            height: 50)
         map.frame = CGRect(
             x: 0,
             y: self.view.frame.size.height / 2,
@@ -349,51 +330,49 @@ extension MapViewController {
     func drawRouteInAR(destination : Route){
         let request = MKDirections.Request()
         navigationService.calculateSteps(destination: destination, request: request) { route in
-            if(self.algoChanger.isOn){
-                self.myAR(route: route)
-            }else{
-                self.yandexAR(route: route)
+            var steps: [CLLocationCoordinate2D] = []
+            for stepIndex in 0..<route.polyline.pointCount {
+                let step: MKMapPoint = route.polyline.points()[stepIndex]
+                steps.append(step.coordinate)
             }
+            self.navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
+            let route = steps
+                .map { self.navigationService.convert(scnView: self.sceneView, coordinate: $0) } // convert all the coordinates to the AR suitable
+                .compactMap { $0 } // remove the nils
+                .map { CGPoint(position: $0) } // combine the points
+            self.addMapAnnotations() // map
+            self.polylineNodes = self.navigationService.setNavigation(forRoute: route) // AR
+            // zoom in to the current user's location
+            guard let location = self.steps.first else { return }
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: location.getLocation().coordinate, span: span)
+            self.map.setRegion(region, animated: true)
         }
     }
     
-    func yandexAR(route : MKRoute){
-        var steps: [CLLocationCoordinate2D] = []
-        for stepIndex in 0..<route.polyline.pointCount {
-            let step: MKMapPoint = route.polyline.points()[stepIndex]
-            steps.append(step.coordinate)
-        }
-        navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
-        let route = steps
-            .map { ExtraNavigationService.convert(scnView: self.sceneView, navService: navigationService, coordinate: $0) }
-            .compactMap { $0 } // remove the nils
-            .map { CGPoint(position: $0) }
-        polylineNodes = ExtraNavigationService.createPolyline(forRoute: route, withAnimationLength: 5.0)
-    }
+//    func extraAR(route : MKRoute){
+//        let steps = route.steps
+//        var index : Int = 0
+//        for step in steps {
+//            self.annotations.append(PointOfInterest(coordinate: step.getLocation().coordinate, title: "N " + step.instructions, color : UIColor.red))
+//            self.steps.append(step)
+//            self.legs.append(self.navigationService.calculateLeg(for: index, and: step, and: steps))
+//            index = index + 1
+//        }
+//        // add all the data to the map and AR
+//        self.addMapAnnotations() // map
+//        self.addAnchors() // AR
+//        // zoom in to the current user's location
+//        guard let location = self.steps.first else { return }
+//        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+//        let region = MKCoordinateRegion(center: location.getLocation().coordinate, span: span)
+//        self.map.setRegion(region, animated: true)
+//    }
     
-    func myAR(route : MKRoute){
-        let steps = route.steps
-        var index : Int = 0
-        for step in steps {
-            self.annotations.append(PointOfInterest(coordinate: step.getLocation().coordinate, title: "N " + step.instructions, color : UIColor.red))
-            self.steps.append(step)
-            self.legs.append(self.navigationService.calculateLeg(for: index, and: step, and: steps))
-            index = index + 1
-        }
-        // add all the data to the map and AR
-        self.addMapAnnotations() // map
-        self.addAnchors() // AR
-        // zoom in to the current user's location
-        guard let location = self.steps.first else { return }
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: location.getLocation().coordinate, span: span)
-        self.map.setRegion(region, animated: true)
-    }
-    
-    func addAnchors() {
-        navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
-        nodes = navigationService.addNodes(legs: legs, steps: steps, sceneView : sceneView)
-    }
+//    func addAnchors() {
+//        navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
+//        nodes = navigationService.addNodes(legs: legs, steps: steps, sceneView : sceneView)
+//    }
 }
 
 extension MapViewController{
