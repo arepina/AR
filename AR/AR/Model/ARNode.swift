@@ -16,15 +16,15 @@ class ARNode: SCNNode {
     var location: CLLocation! // postion in real world
     var distance: Double! // distance of the step
     var title: String! // title of the step
-    var anchor: ARAnchor? {// position in AR
-        //When we update our position, we take the anchor’s matrix transform and use the x, y and z values from the last column, which are the values of the position transform
-        didSet {
-            guard let transform = anchor?.transform else { return }
-            self.position = Matrix.positionFromTransform(transform)
-        }
-    }
+//    var anchor: ARAnchor? {// position in AR
+//        //When we update our position, we take the anchor’s matrix transform and use the x, y and z values from the last column, which are the values of the position transform
+//        didSet {
+//            guard let transform = anchor?.transform else { return }
+//            self.position = Matrix.positionFromTransform(transform)
+//        }
+//    }
     
-    init(radius: CGFloat = 0.2, color: UIColor = UIColor.red, transparency: CGFloat = 0.3, height: CGFloat = 0.01) {
+    init(radius: CGFloat = 0.2, color: UIColor = UIColor.blue, transparency: CGFloat = 0.3, height: CGFloat = 0.01) {
         let cylinder = SCNCylinder(radius: radius, height: height)
         cylinder.firstMaterial?.diffuse.contents = color
         cylinder.firstMaterial?.transparency = transparency
@@ -36,7 +36,7 @@ class ARNode: SCNNode {
     init(location: CLLocation, anchor: ARAnchor, title: String, distance: Double) {
         super.init()
         self.location = location
-        self.anchor = anchor
+//        self.anchor = anchor
         self.title = title
         self.distance = distance
         let billboardConstraint = SCNBillboardConstraint()
@@ -55,22 +55,22 @@ class ARNode: SCNNode {
         return ARSCNArrowGeometry(material: material)
     }
     
-    func addNodeIntermeditary(with radius: CGFloat, and color: UIColor) {
-        let node = SCNNode(geometry: createNode(with: radius, color: color))
-        addChildNode(node)
-    }
-    
-    func addNodeMain(with radius: CGFloat, and color: UIColor, and text: String) {
+    func addNodeWithText(with radius: CGFloat, and color: UIColor, and text: String) {
         let node = SCNNode(geometry: createNode(with: radius, color: color))
         let newText = SCNText(string: title, extrusionDepth: 0.05)
         newText.font = UIFont (name: "AvenirNext-Medium", size: 1)
-        newText.firstMaterial?.diffuse.contents = UIColor.red
+        newText.firstMaterial?.diffuse.contents = UIColor.white
         let _textNode = SCNNode(geometry: newText)
         let annotationNode = SCNNode()
         annotationNode.addChildNode(_textNode)
         annotationNode.position = node.position
         addChildNode(node)
         addChildNode(annotationNode)
+    }
+    
+    func addNode(with radius: CGFloat, and color: UIColor) {
+        let node = SCNNode(geometry: createNode(with: radius, color: color))
+        addChildNode(node)
     }
 }
 

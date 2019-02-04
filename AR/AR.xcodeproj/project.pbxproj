@@ -22,8 +22,6 @@
 		5D264AED21AEA87200C9CE02 /* SettingsWalkthoughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D264AEC21AEA87200C9CE02 /* SettingsWalkthoughContentViewController.swift */; };
 		5D27E77521A463FB002AA4B5 /* SetupRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27E77421A463FB002AA4B5 /* SetupRouteViewController.swift */; };
 		5D29215321AD9F2800836302 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29215221AD9F2800836302 /* Route.swift */; };
-		5D29BD4F21B563C500C8D4B0 /* FloatingPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD4E21B563C500C8D4B0 /* FloatingPoint+Extension.swift */; };
-		5D29BD5121B566ED00C8D4B0 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD5021B566ED00C8D4B0 /* Matrix.swift */; };
 		5D29BD5321B5812800C8D4B0 /* MKRouteStep+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD5221B5812800C8D4B0 /* MKRouteStep+Extension.swift */; };
 		5D29BD5521B5814B00C8D4B0 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD5421B5814B00C8D4B0 /* PointOfInterest.swift */; };
 		5D29BD5721B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD5621B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift */; };
@@ -95,8 +93,6 @@
 		5D264AEC21AEA87200C9CE02 /* SettingsWalkthoughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWalkthoughContentViewController.swift; sourceTree = "<group>"; };
 		5D27E77421A463FB002AA4B5 /* SetupRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRouteViewController.swift; sourceTree = "<group>"; };
 		5D29215221AD9F2800836302 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		5D29BD4E21B563C500C8D4B0 /* FloatingPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Extension.swift"; sourceTree = "<group>"; };
-		5D29BD5021B566ED00C8D4B0 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		5D29BD5221B5812800C8D4B0 /* MKRouteStep+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKRouteStep+Extension.swift"; sourceTree = "<group>"; };
 		5D29BD5421B5814B00C8D4B0 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
 		5D29BD5621B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
@@ -164,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				5D24C40521B29C160067DF7F /* UIViewController+Extension.swift */,
-				5D29BD4E21B563C500C8D4B0 /* FloatingPoint+Extension.swift */,
 				5D29BD5221B5812800C8D4B0 /* MKRouteStep+Extension.swift */,
 				5D29BD5621B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift */,
 				5DA7C8F421C665F200ADEB36 /* String+Extension.swift */,
@@ -206,7 +201,6 @@
 			children = (
 				5D29215221AD9F2800836302 /* Route.swift */,
 				5D24C40021B28CF30067DF7F /* ARNode.swift */,
-				5D29BD5021B566ED00C8D4B0 /* Matrix.swift */,
 				5D29BD5421B5814B00C8D4B0 /* PointOfInterest.swift */,
 				5DCF24DC21BAAFFA002E8C6B /* Object.swift */,
 				5D37A4872201DA060052E772 /* Vector.swift */,
@@ -532,7 +526,6 @@
 				5D27E77521A463FB002AA4B5 /* SetupRouteViewController.swift in Sources */,
 				5D29BD5721B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				5D37A4922201F4D30052E772 /* Array+Extension.swift in Sources */,
-				5D29BD5121B566ED00C8D4B0 /* Matrix.swift in Sources */,
 				5D4410D321AC126100F893D4 /* FirebaseService.swift in Sources */,
 				5D264AEB21AEA53D00C9CE02 /* SettingsWalkthroughPageViewController.swift in Sources */,
 				5D8266432192F35500B7DF0F /* LoginViewController.swift in Sources */,
@@ -551,7 +544,6 @@
 				5D37A4962202046E0052E772 /* Leg.swift in Sources */,
 				5D24C40121B28CF30067DF7F /* ARNode.swift in Sources */,
 				5D29215321AD9F2800836302 /* Route.swift in Sources */,
-				5D29BD4F21B563C500C8D4B0 /* FloatingPoint+Extension.swift in Sources */,
 				5D37A4902201DB020052E772 /* CGLine.swift in Sources */,
 				5D09BE532204687000EA3B73 /* Scalar+Extension.swift in Sources */,
 				5D1ED43F21A407DA008155D1 /* SideMenuTableViewController.swift in Sources */,

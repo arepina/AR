@@ -36,11 +36,8 @@ class ObjectsService{
                     let lon = (coordinates[0] as! NSArray)[0] as! Double
                     let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
                     let loc = CLLocation(coordinate: coordinate, altitude: 150)
-                    let ob : Object = Object(l: loc, t : name, i : image)
-//                    let loc1 = CLLocation(coordinate: coordinate, altitude: 147)
-//                    let ob1 : Object = Object(l: loc1, t : name)
+                    let ob : Object = Object(l: loc, t : name, i : image)                    
                     objects.append(ob) // image
-//                    objects.append(ob1) // text
                 }
                 
             } else {

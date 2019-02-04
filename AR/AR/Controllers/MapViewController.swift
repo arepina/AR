@@ -40,10 +40,10 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     var objectTheaters : [Object]! // theaters
     var annotationTheaters : [PointOfInterest] = [] //  theaters pins
     var isFirst : Bool!
-    var polylineNodes: [SCNNode] = [] {
+    var routeNodes: [SCNNode] = [] {
         didSet {
             oldValue.forEach { $0.removeFromParentNode() }
-            polylineNodes.forEach {
+            routeNodes.forEach {
                 sceneView.scene.rootNode.addChildNode($0)
             }
         }
@@ -226,7 +226,7 @@ extension MapViewController: MKMapViewDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
             pinView!.canShowCallout = true
             pinView!.animatesDrop = false
-            pinView!.pinTintColor = pin!.color //?? .red
+            pinView!.pinTintColor = pin!.color
         }
         else {
             pinView!.annotation = annotation
@@ -238,12 +238,12 @@ extension MapViewController: MKMapViewDelegate {
         if overlay is MKCircle {
             let renderer = MKCircleRenderer(overlay: overlay)
             renderer.fillColor = UIColor.black.withAlphaComponent(0.1)
-            renderer.strokeColor = UIColor.red
+            renderer.strokeColor = UIColor.blue
             renderer.lineWidth = 4
             return renderer
         }else{
             let myLineRenderer = MKPolylineRenderer(polyline: myRoute.polyline)
-            myLineRenderer.strokeColor = UIColor.red
+            myLineRenderer.strokeColor = UIColor.blue
             myLineRenderer.lineWidth = 2
             return myLineRenderer
         }
@@ -341,7 +341,7 @@ extension MapViewController {
                 .compactMap { $0 } // remove the nils
                 .map { CGPoint(position: $0) } // combine the points
             self.addMapAnnotations() // map
-            self.polylineNodes = self.navigationService.setNavigation(forRoute: route) // AR
+            self.routeNodes = self.navigationService.setNavigation(forRoute: route) // AR
             // zoom in to the current user's location
             guard let location = self.steps.first else { return }
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
@@ -354,7 +354,7 @@ extension MapViewController {
 //        let steps = route.steps
 //        var index : Int = 0
 //        for step in steps {
-//            self.annotations.append(PointOfInterest(coordinate: step.getLocation().coordinate, title: "N " + step.instructions, color : UIColor.red))
+//            self.annotations.append(PointOfInterest(coordinate: step.getLocation().coordinate, title: "N " + step.instructions, color : UIColor.white))
 //            self.steps.append(step)
 //            self.legs.append(self.navigationService.calculateLeg(for: index, and: step, and: steps))
 //            index = index + 1
@@ -422,7 +422,7 @@ extension MapViewController{
             SwiftSpinner.hide()
             if objectMuseums == nil{
                 objectMuseums = ObjectsService.getObjects(fileName: "museums") // 54 objects + 1 extra for test purposes
-                annotationMuseums = ObjectsService.getAnnotations(objects: objectMuseums, color : UIColor.red)
+                annotationMuseums = ObjectsService.getAnnotations(objects: objectMuseums, color : UIColor.white)
             }
             let myLocation = SwiftLocation.Locator.currentLocation!
             var annIndex = 0
@@ -452,7 +452,7 @@ extension MapViewController{
             SwiftSpinner.hide()
             if objectTheaters == nil{
                 objectTheaters = ObjectsService.getObjects(fileName: "theaters") // 83 objects
-                annotationTheaters = ObjectsService.getAnnotations(objects: objectTheaters, color : UIColor.red)
+                annotationTheaters = ObjectsService.getAnnotations(objects: objectTheaters, color : UIColor.white)
             }
             let myLocation = SwiftLocation.Locator.currentLocation!
             var annIndex = 0

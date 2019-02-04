@@ -57,7 +57,7 @@ class NavigationService{
 //            let sphere = ARNode(location: step.getLocation(), anchor: stepAnchor, title: step.instructions, distance: distance)
 //            sphere.scale = SCNVector3(x: scale, y: scale, z: scale)
 //            sphere.position = position
-//            sphere.addNodeMain(with: 0.3, and: .green, and: step.instructions)
+//            sphere.createNodeWithText(with: 0.3, and: .green, and: step.instructions)
 //            nodes.append(sphere)
 //            sceneView.session.add(anchor: stepAnchor)
 //            sceneView.scene.rootNode.addChildNode(sphere)
@@ -73,7 +73,7 @@ class NavigationService{
 //            let sphere = ARNode(location: location, anchor: stepAnchor, title: "", distance: distance)
 //            sphere.scale = SCNVector3(x: scale, y: scale, z: scale)
 //            sphere.position = position
-//            sphere.addNodeIntermeditary(with: 0.25, and: .red)
+//            sphere.addNode(with: 0.25, and: .blue)
 //            nodes.append(sphere)
 //            sceneView.session.add(anchor: stepAnchor)
 //            sceneView.scene.rootNode.addChildNode(sphere)
@@ -115,6 +115,9 @@ class NavigationService{
     func convert(scnView: SCNView, coordinate: CLLocationCoordinate2D) -> SCNVector3? {
         let location = bestLocationEstimate(locations: updatedLocations)
         let translation = location.coordinate.coordinatesTranslation(toCoordinate: coordinate)
+        let bearing = CLLocationCoordinate2D.bearing(startLocation: location, destinationLocation: translation)
+        
+        //todo!!!
         return SCNVector3(
             x: scnView.pointOfView!.worldPosition.x + Float(translation.coordinate.longitude),
             y: 0.0,
@@ -195,17 +198,19 @@ class NavigationService{
         var nodes: [SCNNode] = []
         for index in 0..<routeLegs.count {
             let leg = routeLegs[index]
-            let node : ARNode = ARNode()
-            let arNode = SCNNode(geometry: node.createNode(with: 0.3, color: .red))
-            let position = setPosition(firstStep: leg.steps.first!)
-            arNode.runAction(SCNAction.repeat(SCNAction.sequence([position]), count: 1))
-            nodes.append(arNode)
+            for stepIndex in 0..<leg.steps.count{
+                let node : ARNode = ARNode()
+                let arNode = SCNNode(geometry: node.createNode(with: 0.3, color: .blue))
+                let position = setPosition(step: leg.steps[stepIndex])
+                arNode.runAction(SCNAction.repeat(SCNAction.sequence([position]), count: 1))
+                nodes.append(arNode)
+            }
         }
         return nodes
     }
     
-    func setPosition(firstStep: Step) -> SCNAction {
-        let initialPosition = firstStep.point.positionInAR
+    func setPosition(step: Step) -> SCNAction {
+        let initialPosition = step.point.positionInAR
         let initialAngle = Vector.x.angle(with: Vector(0,0))
         let move = SCNAction.move(to: initialPosition, duration: 0.0)
         let rotate = SCNAction.rotateTo(x: 0.0, y: CGFloat(initialAngle), z: 0.0, duration: 0.0)
