@@ -349,30 +349,6 @@ extension MapViewController {
             self.map.setRegion(region, animated: true)
         }
     }
-    
-//    func extraAR(route : MKRoute){
-//        let steps = route.steps
-//        var index : Int = 0
-//        for step in steps {
-//            self.annotations.append(PointOfInterest(coordinate: step.getLocation().coordinate, title: "N " + step.instructions, color : UIColor.white))
-//            self.steps.append(step)
-//            self.legs.append(self.navigationService.calculateLeg(for: index, and: step, and: steps))
-//            index = index + 1
-//        }
-//        // add all the data to the map and AR
-//        self.addMapAnnotations() // map
-//        self.addAnchors() // AR
-//        // zoom in to the current user's location
-//        guard let location = self.steps.first else { return }
-//        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-//        let region = MKCoordinateRegion(center: location.getLocation().coordinate, span: span)
-//        self.map.setRegion(region, animated: true)
-//    }
-    
-//    func addAnchors() {
-//        navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
-//        nodes = navigationService.addNodes(legs: legs, steps: steps, sceneView : sceneView)
-//    }
 }
 
 extension MapViewController{

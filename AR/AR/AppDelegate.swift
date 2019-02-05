@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()        
         Fabric.with([Crashlytics.self])
+        
+        application.isIdleTimerDisabled = true
 
         return true
     }
