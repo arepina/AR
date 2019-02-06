@@ -47,7 +47,6 @@
 		5D82664B2192F35700B7DF0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8266492192F35700B7DF0F /* LaunchScreen.storyboard */; };
 		5DA7C8F521C665F200ADEB36 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7C8F421C665F200ADEB36 /* String+Extension.swift */; };
 		5DCF24DB21BAAFB2002E8C6B /* ObjectsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF24DA21BAAFB2002E8C6B /* ObjectsService.swift */; };
-		5DCF24DD21BAAFFA002E8C6B /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF24DC21BAAFFA002E8C6B /* Object.swift */; };
 		6CC2103D64278BEE3BE48B53 /* Pods_AR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073FD33836F3E58978A49137 /* Pods_AR.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,7 +122,6 @@
 		5D82664C2192F35700B7DF0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DA7C8F421C665F200ADEB36 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		5DCF24DA21BAAFB2002E8C6B /* ObjectsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsService.swift; sourceTree = "<group>"; };
-		5DCF24DC21BAAFFA002E8C6B /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		90D618CD6A98209999A54CDD /* Pods-AR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR/Pods-AR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,7 +200,6 @@
 				5D29215221AD9F2800836302 /* Route.swift */,
 				5D24C40021B28CF30067DF7F /* ARNode.swift */,
 				5D29BD5421B5814B00C8D4B0 /* PointOfInterest.swift */,
-				5DCF24DC21BAAFFA002E8C6B /* Object.swift */,
 				5D37A4872201DA060052E772 /* Vector.swift */,
 				5D37A48F2201DB020052E772 /* CGLine.swift */,
 				5D37A493220204530052E772 /* Step.swift */,
@@ -549,7 +546,6 @@
 				5D1ED43F21A407DA008155D1 /* SideMenuTableViewController.swift in Sources */,
 				5D2A38E121B7DCA9002CEF19 /* NavigationService.swift in Sources */,
 				5D29BD5521B5814B00C8D4B0 /* PointOfInterest.swift in Sources */,
-				5DCF24DD21BAAFFA002E8C6B /* Object.swift in Sources */,
 				5D264AED21AEA87200C9CE02 /* SettingsWalkthoughContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

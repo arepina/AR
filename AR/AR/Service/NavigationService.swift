@@ -131,8 +131,8 @@ class NavigationService{
             let leg = routeLegs[index]
             for stepIndex in 0..<leg.steps.count{
                 let node : ARNode = ARNode()
-                let arNode = SCNNode(geometry: node.createNode(with: 0.3, color: .blue))
-                let position = setPosition(step: leg.steps[stepIndex])
+                let arNode = SCNNode(geometry: node.createNode())
+                let position = setPosition(point: leg.steps[stepIndex].point)
                 arNode.runAction(SCNAction.repeat(SCNAction.sequence([position]), count: 1))
                 nodes.append(arNode)
             }
@@ -140,8 +140,29 @@ class NavigationService{
         return nodes
     }
     
-    func setPosition(step: Step) -> SCNAction {
-        let initialPosition = step.point.positionInAR
+    func setExtraNodes(nodes: [CGPoint], objects : [ARNode]) -> [SCNNode]{
+        var scnNodes: [SCNNode] = []
+        for index in 0..<objects.count {
+            let node : ARNode = ARNode()
+            let arNode = SCNNode(geometry: node.createNode())
+            let position = setPosition(point: nodes[index])
+            arNode.runAction(SCNAction.repeat(SCNAction.sequence([position]), count: 1))
+            
+            let imageNode = node.makeBillboardNode(objects[index].image)
+            imageNode.position = SCNVector3Make(0, 4, 0)
+            arNode.addChildNode(imageNode)
+            
+            let textNode = node.makeBillboardNode(objects[index].title.image()!)
+            textNode.position = SCNVector3Make(0, 6, 0)
+            arNode.addChildNode(textNode)
+            
+            scnNodes.append(arNode)
+        }
+        return scnNodes
+    }
+    
+    func setPosition(point: CGPoint) -> SCNAction {
+        let initialPosition = point.positionInAR
         let initialAngle = Vector.x.angle(with: Vector(0,0))
         let move = SCNAction.move(to: initialPosition, duration: 0.0)
         let rotate = SCNAction.rotateTo(x: 0.0, y: CGFloat(initialAngle), z: 0.0, duration: 0.0)

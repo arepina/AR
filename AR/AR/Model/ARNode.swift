@@ -9,13 +9,14 @@
 import UIKit
 import ARKit
 import CoreLocation
-
-
+import ARCL
 
 class ARNode: SCNNode {
     var location: CLLocation! // postion in real world
     var distance: Double! // distance of the step
     var title: String! // title of the step
+    var image: UIImage! // image
+    var annotationNode : LocationAnnotationNode!
     
     init(radius: CGFloat = 0.2, color: UIColor = UIColor.blue, transparency: CGFloat = 0.3, height: CGFloat = 0.01) {
         let cylinder = SCNCylinder(radius: radius, height: height)
@@ -36,33 +37,37 @@ class ARNode: SCNNode {
         constraints = [billboardConstraint]
     }
     
+    init(location : CLLocation, title : String, image : UIImage) {
+        super.init()
+        self.location = location
+        self.title = title
+        self.image = image
+    }
+    
+    func makeBillboardNode(_ image: UIImage) -> SCNNode {
+        let plane = SCNPlane(width: 10, height: 10)
+        plane.firstMaterial!.diffuse.contents = image
+        let node = SCNNode(geometry: plane)
+        node.constraints = [SCNBillboardConstraint()]
+        return node
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createNode(with radius: CGFloat, color: UIColor) -> SCNGeometry {
+    func createNode() -> SCNGeometry {
         let material = SCNMaterial()
-        material.diffuse.contents = color
+        material.diffuse.contents = UIColor.blue
         material.lightingModel = .constant
         return ARSCNArrowGeometry(material: material)
     }
     
-    func addNodeWithText(with radius: CGFloat, and color: UIColor, and text: String) {
-        let node = SCNNode(geometry: createNode(with: radius, color: color))
+    func createTextNode() -> SCNGeometry{
         let newText = SCNText(string: title, extrusionDepth: 0.05)
         newText.font = UIFont (name: "AvenirNext-Medium", size: 1)
         newText.firstMaterial?.diffuse.contents = UIColor.white
-        let _textNode = SCNNode(geometry: newText)
-        let annotationNode = SCNNode()
-        annotationNode.addChildNode(_textNode)
-        annotationNode.position = node.position
-        addChildNode(node)
-        addChildNode(annotationNode)
-    }
-    
-    func addNode(with radius: CGFloat, and color: UIColor) {
-        let node = SCNNode(geometry: createNode(with: radius, color: color))
-        addChildNode(node)
+        return newText
     }
 }
 

@@ -38,15 +38,31 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     var nodes: [ARNode] = [] // AR nodes
     var destination : CLLocation! // destination
     var instructions : [String] = []
-    var objectMuseums : [Object]! //  museums
     var annotationMuseums : [PointOfInterest] = [] //  museums pins
-    var objectTheaters : [Object]! // theaters
     var annotationTheaters : [PointOfInterest] = [] //  theaters pins
     var isFirst : Bool!
     var routeNodes: [SCNNode] = [] {
         didSet {
             oldValue.forEach { $0.removeFromParentNode() }
             routeNodes.forEach {
+                sceneView.scene.rootNode.addChildNode($0)
+            }
+        }
+    }
+    
+    var museumNodes: [SCNNode] = [] {
+        didSet {
+            oldValue.forEach { $0.removeFromParentNode() }
+            museumNodes.forEach {
+                sceneView.scene.rootNode.addChildNode($0)
+            }
+        }
+    }
+    
+    var theaterNodes: [SCNNode] = [] {
+        didSet {
+            oldValue.forEach { $0.removeFromParentNode() }
+            theaterNodes.forEach {
                 sceneView.scene.rootNode.addChildNode($0)
             }
         }
@@ -366,33 +382,6 @@ extension MapViewController {
     }
 }
 
-extension MapViewController : UIPickerViewDelegate, UIPickerViewDataSource{
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return instructions.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return instructions[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel: UILabel? = (view as? UILabel)
-        if pickerLabel == nil {
-            pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "AvenirNext-Medium", size: 12)
-            pickerLabel?.textAlignment = .center
-        }
-        pickerLabel?.text = instructions[row]
-        pickerLabel?.textColor = UIColor.black
-        return pickerLabel!
-    }
-}
-
 extension MapViewController{
     @IBAction func museumClick(_ sender: UIButton) {
         if(map.annotations.count > 1 && nodes.count > 0){
@@ -430,29 +419,21 @@ extension MapViewController{
         let toLoad : Bool = sender.layer.shadowColor != UIColor.green.cgColor
         clearObjects(sender)
         if toLoad {
-            SwiftSpinner.show("Loading...")
-            SwiftSpinner.setTitleColor(UIColor(red: 233.0/255, green: 57.0/255, blue: 57.0/255, alpha: 1.0))
-            initAR()
             sender.layer.shadowColor = UIColor.green.cgColor
             sender.layer.shadowOffset = CGSize(width: 2, height: 2)
             sender.layer.shadowOpacity = 1.0
             sender.layer.shadowRadius = 0.0
-            SwiftSpinner.hide()
-            if objectMuseums == nil{
-                objectMuseums = ObjectsService.getObjects(fileName: "museums") // 54 objects + 1 extra for test purposes
-                annotationMuseums = ObjectsService.getAnnotations(objects: objectMuseums, color : UIColor.white)
-            }
-            let myLocation = SwiftLocation.Locator.currentLocation!
-            var annIndex = 0
-            for ob in objectMuseums{
-                let annotation : PointOfInterest = annotationMuseums[annIndex]
-                annIndex+=1
+            navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
+            let objects = ObjectsService.getObjects(fileName: "museums") // 54 objects + 1 extra for test purposes
+            let nodes = objects
+                .map { navigationService.convert(scnView: self.sceneView, coordinate: $0.location.coordinate)} // convert all the coordinates to the AR suitable
+                .compactMap { $0 } // remove the nils
+                .map { CGPoint(position: $0)} // combine the points
+            annotationMuseums = ObjectsService.getAnnotations(objects: objects, color : UIColor.blue)
+            for annotation in annotationMuseums{
                 map.addAnnotation(annotation)
-                let distance = ob.location.distance(from: myLocation) / 1000 // km
-                if distance < 5{ // no need to store all 54 objects
-                    sceneView.addLocationNodeWithConfirmedLocation(locationNode: ob.annotationNode)
-                }
             }
+            museumNodes = navigationService.setExtraNodes(nodes: nodes, objects: objects)// AR
         }
     }
     
@@ -460,29 +441,21 @@ extension MapViewController{
         let toLoad : Bool = sender.layer.shadowColor != UIColor.green.cgColor
         clearObjects(sender)
         if toLoad {
-            SwiftSpinner.show("Loading...")
-            SwiftSpinner.setTitleColor(UIColor(red: 233.0/255, green: 57.0/255, blue: 57.0/255, alpha: 1.0))
-            initAR()
             sender.layer.shadowColor = UIColor.green.cgColor
             sender.layer.shadowOffset = CGSize(width: 2, height: 2)
             sender.layer.shadowOpacity = 1.0
             sender.layer.shadowRadius = 0.0
-            SwiftSpinner.hide()
-            if objectTheaters == nil{
-                objectTheaters = ObjectsService.getObjects(fileName: "theaters") // 83 objects
-                annotationTheaters = ObjectsService.getAnnotations(objects: objectTheaters, color : UIColor.white)
-            }
-            let myLocation = SwiftLocation.Locator.currentLocation!
-            var annIndex = 0
-            for ob in objectTheaters{
-                let annotation : PointOfInterest = annotationTheaters[annIndex]
-                annIndex+=1
+            navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
+            let objects = ObjectsService.getObjects(fileName: "theaters")
+            let nodes = objects
+                .map { navigationService.convert(scnView: self.sceneView, coordinate: $0.location.coordinate)} // convert all the coordinates to the AR suitable
+                .compactMap { $0 } // remove the nils
+                .map { CGPoint(position: $0)} // combine the points
+            annotationTheaters = ObjectsService.getAnnotations(objects: objects, color : UIColor.blue)
+            for annotation in annotationTheaters{
                 map.addAnnotation(annotation)
-                let distance = myLocation.distance(from: ob.location) / 1000 // km
-                if distance < 5 { // no need to store all 83 objects
-                    sceneView.addLocationNodeWithConfirmedLocation(locationNode: ob.annotationNode)
-                }
             }
+            theaterNodes = navigationService.setExtraNodes(nodes: nodes, objects : objects)// AR
         }
     }
     
@@ -493,22 +466,41 @@ extension MapViewController{
         sender.layer.shadowOpacity = 0.0
         sender.layer.shadowRadius = 0.0
         clearButtons()
-        if objectTheaters != nil{
-            for ob in objectTheaters{
-                sceneView.removeLocationNode(locationNode: ob.annotationNode)
-            }
-        }
-        if objectMuseums != nil{
-            for ob in objectMuseums{ 
-                sceneView.removeLocationNode(locationNode: ob.annotationNode)
-            }
-        }
+        museumNodes.removeAll()
+        theaterNodes.removeAll()
         for ob in annotationTheaters{
             map.removeAnnotation(ob)
         }
         for ob in annotationMuseums{
             map.removeAnnotation(ob)
         }
+    }
+}
+
+extension MapViewController : UIPickerViewDelegate, UIPickerViewDataSource{
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return instructions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return instructions[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "AvenirNext-Medium", size: 12)
+            pickerLabel?.textAlignment = .center
+        }
+        pickerLabel?.text = instructions[row]
+        pickerLabel?.textColor = UIColor.black
+        return pickerLabel!
     }
 }
 
