@@ -23,6 +23,8 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     @IBOutlet var theaterBtn: UIButton! // theater btn
     @IBOutlet var buttons: UIStackView!// buttons view
     @IBOutlet var sceneView: SceneLocationView! // AR view
+    @IBOutlet var pickerView: UIStackView! // pickerView
+    @IBOutlet var picker: UIPickerView! // picker
     @IBOutlet var map: MKMapView! // map view
     var press: UILongPressGestureRecognizer! // user tap
     var navigationService = NavigationService() // navigation service
@@ -35,6 +37,7 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     var steps: [MKRoute.Step] = [] // steps of the route
     var nodes: [ARNode] = [] // AR nodes
     var destination : CLLocation! // destination
+    var instructions : [String] = []
     var objectMuseums : [Object]! //  museums
     var annotationMuseums : [PointOfInterest] = [] //  museums pins
     var objectTheaters : [Object]! // theaters
@@ -53,6 +56,8 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
         super.viewDidLoad()
         if ARConfiguration.isSupported {
             isFirst = true
+            picker.delegate = self
+            picker.dataSource = self
             initAR()
             initSearch()
             initMap()
@@ -65,10 +70,6 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
                     let region = MKCoordinateRegion(center: SwiftLocation.Locator.currentLocation!.coordinate, span: span)
                     self.map.setRegion(region, animated: true)
                 }
-//                if loc.horizontalAccuracy <= 65.0 { // The radius of uncertainty for the current location, measured in meters
-//                    self.navigationService.updatedLocations.append(loc)
-//                    self.navigationService.updateNodes(nodes: self.nodes)
-//                }
             }, onFail: {err, last in
                 print("Failed with error: \(err)")
             })
@@ -103,8 +104,10 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
         annotations = []
         legs = []
         nodes = []
+        instructions = []
         myRoute = nil
         destination = nil
+        self.pickerView.isHidden = true
         map.removeAnnotations(map.annotations)
         map.removeOverlays(map.overlays)
     }
@@ -310,6 +313,7 @@ extension MapViewController {
         view.addSubview(sceneView)
         view.addSubview(map)
         view.addSubview(buttons)
+        view.addSubview(pickerView)
     }
     
     override func viewDidLayoutSubviews() {
@@ -320,6 +324,11 @@ extension MapViewController {
             y: self.view.frame.size.height / 2 + 10,
             width: 50,
             height: 180)
+        pickerView.frame = CGRect(
+            x: 0,
+            y: self.view.frame.size.height / 2 - 65,
+            width: self.view.frame.size.width,
+            height: 70.5)
         map.frame = CGRect(
             x: 0,
             y: self.view.frame.size.height / 2,
@@ -335,6 +344,12 @@ extension MapViewController {
                 let step: MKMapPoint = route.polyline.points()[stepIndex]
                 steps.append(step.coordinate)
             }
+            for stepIndex in 0..<route.steps.count{
+                self.instructions.append(route.steps[stepIndex].instructions)
+            }
+            self.instructions = self.instructions.filter { $0 != "" }
+            self.pickerView.isHidden = false
+            self.picker.reloadAllComponents()
             self.navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
             let route = steps
                 .map { self.navigationService.convert(scnView: self.sceneView, coordinate: $0) } // convert all the coordinates to the AR suitable
@@ -348,6 +363,33 @@ extension MapViewController {
             let region = MKCoordinateRegion(center: location.getLocation().coordinate, span: span)
             self.map.setRegion(region, animated: true)
         }
+    }
+}
+
+extension MapViewController : UIPickerViewDelegate, UIPickerViewDataSource{
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return instructions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return instructions[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "AvenirNext-Medium", size: 12)
+            pickerLabel?.textAlignment = .center
+        }
+        pickerLabel?.text = instructions[row]
+        pickerLabel?.textColor = UIColor.black
+        return pickerLabel!
     }
 }
 

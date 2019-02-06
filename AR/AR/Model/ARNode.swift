@@ -26,7 +26,7 @@ class ARNode: SCNNode {
         self.geometry = cylinder
     }
     
-    init(location: CLLocation, anchor: ARAnchor, title: String, distance: Double) {
+    init(location: CLLocation, title: String, distance: Double) {
         super.init()
         self.location = location
         self.title = title

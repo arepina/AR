@@ -188,6 +188,26 @@
                                     <constraint firstAttribute="width" constant="32" id="XKi-yW-aVE"/>
                                 </constraints>
                             </stackView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="po6-RK-JBU">
+                                <rect key="frame" x="0.0" y="291.5" width="375" height="75.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your route" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpR-C9-riC">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G0P-Io-PEe">
+                                        <rect key="frame" x="0.0" y="25.5" width="375" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="eIC-Xo-hGq"/>
+                                        </constraints>
+                                    </pickerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75.5" id="MZb-AU-D8U"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -199,6 +219,8 @@
                             <constraint firstItem="U0s-TX-04Z" firstAttribute="leading" secondItem="xmm-lo-nvL" secondAttribute="leading" id="H7s-PA-vTP"/>
                             <constraint firstItem="xmm-lo-nvL" firstAttribute="top" secondItem="U0s-TX-04Z" secondAttribute="bottom" id="KdW-hf-G9s"/>
                             <constraint firstItem="U0s-TX-04Z" firstAttribute="width" secondItem="czO-bf-yN6" secondAttribute="width" id="NRs-iU-Ocy"/>
+                            <constraint firstItem="po6-RK-JBU" firstAttribute="leading" secondItem="7DC-X3-elq" secondAttribute="leading" id="NjY-nC-rhR"/>
+                            <constraint firstAttribute="trailing" secondItem="po6-RK-JBU" secondAttribute="trailing" id="axY-Xj-bfV"/>
                             <constraint firstItem="xmm-lo-nvL" firstAttribute="top" secondItem="U0s-TX-04Z" secondAttribute="bottom" id="ckr-3X-Awi"/>
                             <constraint firstItem="7NS-B3-tgp" firstAttribute="bottom" secondItem="7DC-X3-elq" secondAttribute="top" id="fl2-i3-9RG"/>
                             <constraint firstItem="QOB-De-7Qt" firstAttribute="top" secondItem="U0s-TX-04Z" secondAttribute="bottom" constant="9" id="kYd-8p-f9T"/>
@@ -206,6 +228,7 @@
                             <constraint firstItem="xmm-lo-nvL" firstAttribute="leading" secondItem="7DC-X3-elq" secondAttribute="leading" id="oLl-O3-75p"/>
                             <constraint firstItem="U0s-TX-04Z" firstAttribute="height" secondItem="czO-bf-yN6" secondAttribute="height" multiplier="0.45" id="odf-ze-LJy"/>
                             <constraint firstItem="xmm-lo-nvL" firstAttribute="height" secondItem="czO-bf-yN6" secondAttribute="height" multiplier="0.45" id="s5e-Z9-qEv"/>
+                            <constraint firstItem="xmm-lo-nvL" firstAttribute="top" secondItem="po6-RK-JBU" secondAttribute="bottom" id="vNM-Wz-JWj"/>
                             <constraint firstItem="7DC-X3-elq" firstAttribute="trailing" secondItem="QOB-De-7Qt" secondAttribute="trailing" id="yQy-M8-Zp1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7DC-X3-elq"/>
@@ -243,6 +266,8 @@
                         <outlet property="buttons" destination="QOB-De-7Qt" id="AC3-3b-Th4"/>
                         <outlet property="map" destination="xmm-lo-nvL" id="5Jk-tH-Rud"/>
                         <outlet property="museumBtn" destination="hGA-OT-H3W" id="11B-wU-b9C"/>
+                        <outlet property="picker" destination="G0P-Io-PEe" id="Nwk-ce-Urw"/>
+                        <outlet property="pickerView" destination="po6-RK-JBU" id="FCC-eW-CkH"/>
                         <outlet property="sceneView" destination="U0s-TX-04Z" id="P6I-QD-FmS"/>
                         <outlet property="theaterBtn" destination="1f3-MQ-i4v" id="bnk-nz-Gbq"/>
                         <segue destination="W3L-WY-07b" kind="show" identifier="FavoriteNow" id="5Zg-9u-bmO"/>

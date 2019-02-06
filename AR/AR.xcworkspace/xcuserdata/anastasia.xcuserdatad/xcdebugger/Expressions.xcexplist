@@ -4,6 +4,11 @@
    <ContextStates>
       <ContextState
          contextName = "closure #1 in MapViewController.drawRouteInAR(destination:):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "route.steps">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MapViewController.addAnchors():MapViewController.swift">
@@ -81,6 +86,9 @@
          contextName = "static ObjectsService.readJson():ObjectsService.swift">
       </ContextState>
       <ContextState
+         contextName = "NavigationService.setNavigation(forRoute:):NavigationService.swift">
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in MapViewController.viewDidLoad():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -151,6 +159,17 @@
             </PersistentString>
             <PersistentString
                value = "distance">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NavigationService.getLegs(route:labels:):NavigationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "labels[currentLegIndex]">
+            </PersistentString>
+            <PersistentString
+               value = "storage.labels.index(of: labels[currentLegIndex])">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
