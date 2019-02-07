@@ -58,6 +58,12 @@ class ARNode: SCNNode {
         return c
     }
     
+    func createInvisibleNode() -> SCNGeometry {
+        let c : SCNCapsule = SCNCapsule(capRadius: 0.5, height: 2.0)
+        c.firstMaterial?.diffuse.contents =  UIColor(white: 1, alpha: 0)
+        return c
+    }
+    
     func createTextNode() -> SCNGeometry{
         let newText = SCNText(string: title, extrusionDepth: 0.05)
         newText.font = UIFont (name: "AvenirNext-Medium", size: 1)

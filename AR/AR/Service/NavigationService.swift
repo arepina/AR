@@ -141,7 +141,7 @@ class NavigationService{
         var scnNodes: [SCNNode] = []
         for index in 0..<objects.count {
             let node : ARNode = ARNode()
-            let arNode = SCNNode(geometry: node.createNode())
+            let arNode = SCNNode(geometry: node.createInvisibleNode())
             let position = setPosition(point: nodes[index])
             arNode.runAction(SCNAction.repeat(SCNAction.sequence([position]), count: 1))
             

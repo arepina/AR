@@ -29,7 +29,10 @@ class ObjectsService{
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 let res = json as! [NSDictionary]
                 for r in res{
-                    let name = r.value(forKey: "CommonName") as! String
+                    var name = r.value(forKey: "CommonName") as! String
+                    let mutableString = NSMutableString(string: name)
+                    CFStringTransform(mutableString, nil, kCFStringTransformToLatin, false)
+                    name += " \n(" + (mutableString as String) + ")"
                     let geoDict = r.value(forKey: "geoData") as! NSDictionary
                     let coordinates = geoDict.value(forKey: "coordinates") as! NSArray
                     let lat = (coordinates[0] as! NSArray)[1] as! Double
