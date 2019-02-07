@@ -46,9 +46,6 @@ class NavigationService{
     func convert(scnView: SCNView, coordinate: CLLocationCoordinate2D) -> SCNVector3? {
         let location = bestLocationEstimate(locations: updatedLocations)
         let translation = location.coordinate.coordinatesTranslation(toCoordinate: coordinate)
-        let bearing = location.coordinate.bearing(location: translation)
-        
-        //todo!!!
         return SCNVector3(
             x: scnView.pointOfView!.worldPosition.x + Float(translation.coordinate.longitude),
             y: 0.0,
@@ -153,7 +150,7 @@ class NavigationService{
             arNode.addChildNode(imageNode)
             
             let textNode = node.makeBillboardNode(objects[index].title.image()!)
-            textNode.position = SCNVector3Make(0, 6, 0)
+            textNode.position = SCNVector3Make(0, 10, 0)
             arNode.addChildNode(textNode)
             
             scnNodes.append(arNode)
