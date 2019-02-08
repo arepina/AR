@@ -185,6 +185,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "NavigationService.setExtraNodes(nodes:objects:):NavigationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "objects[index].image.imageAsset">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.loadObjects():MapViewController.swift">
       </ContextState>
       <ContextState

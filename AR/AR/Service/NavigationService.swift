@@ -137,20 +137,24 @@ class NavigationService{
         return nodes
     }
     
-    func setExtraNodes(nodes: [CGPoint], objects : [ARNode]) -> [SCNNode]{
+    func setExtraNodes(nodes: [CGPoint], objects : [PointOfInterest]) -> [SCNNode]{
         var scnNodes: [SCNNode] = []
         for index in 0..<objects.count {
             let node : ARNode = ARNode()
             let arNode = SCNNode(geometry: node.createInvisibleNode())
             let position = setPosition(point: nodes[index])
             arNode.runAction(SCNAction.repeat(SCNAction.sequence([position]), count: 1))
+            var top : Float = 10
+            if objects[index].image.imageAsset != nil{
+                let imageNode = node.makeBillboardNode(objects[index].image)
+                imageNode.position = SCNVector3Make(0, 4, 0)
+                arNode.addChildNode(imageNode)
+            }else{
+                top = 2
+            }
             
-            let imageNode = node.makeBillboardNode(objects[index].image)
-            imageNode.position = SCNVector3Make(0, 4, 0)
-            arNode.addChildNode(imageNode)
-            
-            let textNode = node.makeBillboardNode(objects[index].title.image()!)
-            textNode.position = SCNVector3Make(0, 10, 0)
+            let textNode = node.makeBillboardNode(objects[index].title!.image()!)
+            textNode.position = SCNVector3Make(0, top, 0)
             arNode.addChildNode(textNode)
             
             scnNodes.append(arNode)

@@ -20,7 +20,7 @@ extension String {
         let attributes: [NSAttributedString.Key : Any] = [
             NSAttributedString.Key(rawValue: NSAttributedString.Key.paragraphStyle.rawValue): paragraph,
             NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): UIFont.boldSystemFont(ofSize: 6),
-            NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue) : UIColor.blue]
+            NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue) : UIColor.red]
         (self as NSString).draw(in: rect, withAttributes: attributes)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

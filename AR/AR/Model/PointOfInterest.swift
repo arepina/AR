@@ -15,12 +15,14 @@ class PointOfInterest: NSObject, MKAnnotation {
     var title: String?    
     var subtitle: String?
     var color: UIColor!
+    var image: UIImage
     
-    init(coordinate: CLLocationCoordinate2D, title: String, color: UIColor!) {
+    init(coordinate: CLLocationCoordinate2D, title: String, color: UIColor!, image: UIImage) {
         self.coordinate = coordinate
         self.title = title
         self.subtitle =  "(\(coordinate.latitude),\(coordinate.longitude))"
         self.color = color
+        self.image = image
         super.init()
     }    
 }

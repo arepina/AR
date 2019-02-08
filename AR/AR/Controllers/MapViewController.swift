@@ -23,21 +23,16 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     @IBOutlet var theaterBtn: UIButton! // theater btn
     @IBOutlet var buttons: UIStackView!// buttons view
     @IBOutlet var sceneView: SceneLocationView! // AR view
-    @IBOutlet var pickerView: UIStackView! // pickerView
-    @IBOutlet var picker: UIPickerView! // picker
     @IBOutlet var map: MKMapView! // map view
+    
     var press: UILongPressGestureRecognizer! // user tap
     var navigationService = NavigationService() // navigation service
     let configuration = ARWorldTrackingConfiguration() // AR configuration
     var myRoute : MKRoute! // route on the map
     var resultSearchController: UISearchController! // search result
     var favoriteRoute: Route! // favorite route
-    var annotations: [PointOfInterest] = [] // annotations for POI
-    var legs: [[CLLocationCoordinate2D]] = [] // legs of the route
-    var steps: [MKRoute.Step] = [] // steps of the route
-    var nodes: [ARNode] = [] // AR nodes
     var destination : CLLocation! // destination
-    var instructions : [String] = []
+    var instructions : [PointOfInterest] = [] // instructions for main steps
     var annotationMuseums : [PointOfInterest] = [] //  museums pins
     var annotationTheaters : [PointOfInterest] = [] //  theaters pins
     var isFirst : Bool!
@@ -68,12 +63,19 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
         }
     }
     
+    var instructionNodes: [SCNNode] = [] {
+        didSet {
+            oldValue.forEach { $0.removeFromParentNode() }
+            instructionNodes.forEach {
+                sceneView.scene.rootNode.addChildNode($0)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if ARConfiguration.isSupported {
             isFirst = true
-            picker.delegate = self
-            picker.dataSource = self
             initAR()
             initSearch()
             initMap()
@@ -116,14 +118,9 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     }
     
     func clearMap(){
-        steps = []
-        annotations = []
-        legs = []
-        nodes = []
         instructions = []
         myRoute = nil
         destination = nil
-        self.pickerView.isHidden = true
         map.removeAnnotations(map.annotations)
         map.removeOverlays(map.overlays)
     }
@@ -224,13 +221,10 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func addMapAnnotations() {
-        annotations.forEach { annotation in
+        instructions.forEach { instruction in
             DispatchQueue.main.async {
-                if let title = annotation.title, title.hasPrefix("N") {
-                    annotation.title!.remove(at: annotation.title!.startIndex) // remove the identify for steps N char
-                }
-                self.map.addAnnotation(annotation)
-                self.map.addOverlay(MKCircle(center: annotation.coordinate, radius: 0.3))
+                self.map.addAnnotation(instruction)
+                self.map.addOverlay(MKCircle(center: instruction.coordinate, radius: 0.3))
             }
         }
     }
@@ -329,7 +323,6 @@ extension MapViewController {
         view.addSubview(sceneView)
         view.addSubview(map)
         view.addSubview(buttons)
-        view.addSubview(pickerView)
     }
     
     override func viewDidLayoutSubviews() {
@@ -340,11 +333,6 @@ extension MapViewController {
             y: self.view.frame.size.height / 2 + 10,
             width: 50,
             height: 180)
-        pickerView.frame = CGRect(
-            x: 0,
-            y: self.view.frame.size.height / 2 - 65,
-            width: self.view.frame.size.width,
-            height: 70.5)
         map.frame = CGRect(
             x: 0,
             y: self.view.frame.size.height / 2,
@@ -361,22 +349,28 @@ extension MapViewController {
                 steps.append(step.coordinate)
             }
             for stepIndex in 0..<route.steps.count{
-                self.instructions.append(route.steps[stepIndex].instructions)
+                if route.steps[stepIndex].instructions != ""{
+                    let poi : PointOfInterest = PointOfInterest(coordinate: route.steps[stepIndex].getLocation().coordinate, title: route.steps[stepIndex].instructions, color: .blue, image : UIImage())
+                    self.instructions.append(poi)
+                }
             }
-            self.instructions = self.instructions.filter { $0 != "" }
-            self.pickerView.isHidden = false
-            self.picker.reloadAllComponents()
             self.navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
+            //AR steps
             let route = steps
                 .map { self.navigationService.convert(scnView: self.sceneView, coordinate: $0) } // convert all the coordinates to the AR suitable
                 .compactMap { $0 } // remove the nils
                 .map { CGPoint(position: $0) } // combine the points
             self.addMapAnnotations() // map
             self.routeNodes = self.navigationService.setNavigation(forRoute: route) // AR
+            //AR step's labels
+            let nodes = self.instructions
+                .map { self.navigationService.convert(scnView: self.sceneView, coordinate: $0.coordinate)} // convert all the coordinates to the AR suitable
+                .compactMap { $0 } // remove the nils
+                .map { CGPoint(position: $0)} // combine the points
+            self.instructionNodes = self.navigationService.setExtraNodes(nodes: nodes, objects: self.instructions)// AR
             // zoom in to the current user's location
-            guard let location = self.steps.first else { return }
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            let region = MKCoordinateRegion(center: location.getLocation().coordinate, span: span)
+            let region = MKCoordinateRegion(center: SwiftLocation.Locator.currentLocation!.coordinate, span: span)
             self.map.setRegion(region, animated: true)
         }
     }
@@ -384,38 +378,6 @@ extension MapViewController {
 
 extension MapViewController{
     @IBAction func museumClick(_ sender: UIButton) {
-        if(map.annotations.count > 1 && nodes.count > 0){
-            let refreshAlert = UIAlertController(title: "🏛", message: "You are going to switch to museums view mode! Is it ok?", preferredStyle: UIAlertController.Style.alert)
-            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-                self.clearMap()
-                self.loadMuseums(sender)
-            }))
-            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-                //do nothing
-            }))
-            present(refreshAlert, animated:true, completion: nil)
-        }else{
-            loadMuseums(sender)
-        }
-    }
-    
-    @IBAction func theatersClick(_ sender: UIButton) {
-        if(map.annotations.count > 1 && nodes.count > 0){
-            let refreshAlert = UIAlertController(title: "🎭", message: "You are going to switch to theathers view mode! Is it ok?", preferredStyle: UIAlertController.Style.alert)
-            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-                self.clearMap()
-                self.loadTheathers(sender)
-            }))
-            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-                //do nothing
-            }))
-            present(refreshAlert, animated:true, completion: nil)
-        }else{
-            loadTheathers(sender)
-        }
-    }
-    
-    func loadMuseums(_ sender: UIButton){
         let toLoad : Bool = sender.layer.shadowColor != UIColor.green.cgColor
         clearObjects(sender)
         if toLoad {
@@ -426,18 +388,17 @@ extension MapViewController{
             navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
             let objects = ObjectsService.getObjects(fileName: "museums") // 54 objects + 1 extra for test purposes
             let nodes = objects
-                .map { navigationService.convert(scnView: self.sceneView, coordinate: $0.location.coordinate)} // convert all the coordinates to the AR suitable
+                .map { navigationService.convert(scnView: self.sceneView, coordinate: $0.coordinate)} // convert all the coordinates to the AR suitable
                 .compactMap { $0 } // remove the nils
                 .map { CGPoint(position: $0)} // combine the points
-            annotationMuseums = ObjectsService.getAnnotations(objects: objects, color : UIColor.blue)
-            for annotation in annotationMuseums{
+            for annotation in objects{
                 map.addAnnotation(annotation)
             }
             museumNodes = navigationService.setExtraNodes(nodes: nodes, objects: objects)// AR
         }
     }
     
-    func loadTheathers(_ sender: UIButton){
+    @IBAction func theatersClick(_ sender: UIButton) {
         let toLoad : Bool = sender.layer.shadowColor != UIColor.green.cgColor
         clearObjects(sender)
         if toLoad {
@@ -448,11 +409,10 @@ extension MapViewController{
             navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
             let objects = ObjectsService.getObjects(fileName: "theaters")
             let nodes = objects
-                .map { navigationService.convert(scnView: self.sceneView, coordinate: $0.location.coordinate)} // convert all the coordinates to the AR suitable
+                .map { navigationService.convert(scnView: self.sceneView, coordinate: $0.coordinate)} // convert all the coordinates to the AR suitable
                 .compactMap { $0 } // remove the nils
                 .map { CGPoint(position: $0)} // combine the points
-            annotationTheaters = ObjectsService.getAnnotations(objects: objects, color : UIColor.blue)
-            for annotation in annotationTheaters{
+            for annotation in objects{
                 map.addAnnotation(annotation)
             }
             theaterNodes = navigationService.setExtraNodes(nodes: nodes, objects : objects)// AR
@@ -474,33 +434,6 @@ extension MapViewController{
         for ob in annotationMuseums{
             map.removeAnnotation(ob)
         }
-    }
-}
-
-extension MapViewController : UIPickerViewDelegate, UIPickerViewDataSource{
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return instructions.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return instructions[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel: UILabel? = (view as? UILabel)
-        if pickerLabel == nil {
-            pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "AvenirNext-Medium", size: 12)
-            pickerLabel?.textAlignment = .center
-        }
-        pickerLabel?.text = instructions[row]
-        pickerLabel?.textColor = UIColor.black
-        return pickerLabel!
     }
 }
 

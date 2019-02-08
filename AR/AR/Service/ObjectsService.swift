@@ -15,8 +15,8 @@ import ARCL
 
 class ObjectsService{    
     
-    static func getObjects(fileName : String) -> [ARNode]{
-        var objects : [ARNode] = []
+    static func getObjects(fileName : String) -> [PointOfInterest]{
+        var objects : [PointOfInterest] = []
         var image : UIImage
         if fileName == "museums"{
             image = UIImage(named: "museum")!
@@ -37,9 +37,8 @@ class ObjectsService{
                     let coordinates = geoDict.value(forKey: "coordinates") as! NSArray
                     let lat = (coordinates[0] as! NSArray)[1] as! Double
                     let lon = (coordinates[0] as! NSArray)[0] as! Double
-                    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                    let loc = CLLocation(coordinate: coordinate, altitude: 150)
-                    let ob : ARNode = ARNode(location: loc, title: name, image: image)
+                    let coord = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                    let ob : PointOfInterest = PointOfInterest(coordinate: coord, title: name, color: nil, image: image)
                     objects.append(ob)
                 }
                 
@@ -50,14 +49,5 @@ class ObjectsService{
             print(error.localizedDescription)
         }
         return objects
-    }
-    
-    static func getAnnotations(objects : [ARNode], color : UIColor) -> [PointOfInterest]{
-        var annotations : [PointOfInterest] = []
-        for ob in objects{
-            let annotation : PointOfInterest = PointOfInterest(coordinate: ob.location.coordinate, title: ob.title, color : color)
-            annotations.append(annotation)
-        }
-        return annotations
     }
 }
