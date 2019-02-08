@@ -25,14 +25,15 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     @IBOutlet var sceneView: SceneLocationView! // AR view
     @IBOutlet var map: MKMapView! // map view
     
-    var press: UILongPressGestureRecognizer! // user tap
-    var navigationService = NavigationService() // navigation service
+    var pressMap: UILongPressGestureRecognizer! // map tap
+    var pressView: UITapGestureRecognizer! // ar tap
+    var navigationService : NavigationService! // navigation service
     var myRoute : MKRoute! // route on the map
     var resultSearchController: UISearchController! // search result
     var favoriteRoute: Route! // favorite route
     var destination : CLLocation! // destination
     var poiHolder : PointOfInterestHolder! // POIs
-    var isFirst : Bool!
+    var isFirst : Bool! // is first run of the location detector
     
     var routeNodes: [SCNNode] = [] {
         didSet {
@@ -171,10 +172,10 @@ extension MapViewController: MKMapViewDelegate {
     func initMap(){
         navigationService = NavigationService()
         poiHolder = PointOfInterestHolder()
-        press = UILongPressGestureRecognizer(target: self, action: #selector(onMapTap(gesture:)))
-        press.minimumPressDuration = 0.35
+        pressMap = UILongPressGestureRecognizer(target: self, action: #selector(onMapTap(gesture:)))
+        pressMap.minimumPressDuration = 0.35
         map.showsUserLocation = true
-        map.addGestureRecognizer(press)
+        map.addGestureRecognizer(pressMap)
         map.delegate = self
     }
     
@@ -318,10 +319,23 @@ extension MapViewController {
     func initAR(){
         sceneView = SceneLocationView()
         sceneView.showsStatistics = true
+        pressView = UITapGestureRecognizer(target: self, action: #selector(onSceneTap))
+        sceneView.addGestureRecognizer(pressView)
         sceneView.run()
         view.addSubview(sceneView)
         view.addSubview(map)
         view.addSubview(buttons)
+    }
+    
+    @objc func onSceneTap() {
+        if view.contains(map){
+            map.removeFromSuperview()
+            buttons.removeFromSuperview()
+        }else{
+            sceneView.addSubview(map)
+            sceneView.addSubview(buttons)
+            //todo move the subviews
+        }
     }
     
     override func viewDidLayoutSubviews() {

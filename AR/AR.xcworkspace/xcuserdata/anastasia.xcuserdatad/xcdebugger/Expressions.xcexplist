@@ -85,7 +85,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapViewController.loadObjects():MapViewController.swift">
+         contextName = "MapViewController.clearObjects(_:):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "poiHolder">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "CLLocationManager.requestAuthorization(level:):Shared.swift">
@@ -114,12 +119,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapViewController.clearObjects(_:):MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "poiHolder">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "MapViewController.loadObjects():MapViewController.swift">
       </ContextState>
       <ContextState
          contextName = "static ObjectsService.getObjects(fileName:):ObjectsService.swift">
@@ -156,6 +156,17 @@
          <PersistentStrings>
             <PersistentString
                value = "route.steps">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.onSceneTap(gesture:):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view.contains(map)">
+            </PersistentString>
+            <PersistentString
+               value = "viewNew.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
