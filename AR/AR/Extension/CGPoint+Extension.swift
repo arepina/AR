@@ -10,9 +10,14 @@ import Foundation
 import CoreLocation
 import SceneKit
 
-extension CGPoint {
+extension CGPoint : Hashable{    
+    
     var positionInAR: SCNVector3 {
         return SCNVector3(y, 0.0, x)
+    }
+    
+    public var hashValue:Int {
+        return self.x.hashValue ^ self.y.hashValue
     }
     
     init(position: SCNVector3) {

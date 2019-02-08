@@ -27,15 +27,13 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     
     var press: UILongPressGestureRecognizer! // user tap
     var navigationService = NavigationService() // navigation service
-    let configuration = ARWorldTrackingConfiguration() // AR configuration
     var myRoute : MKRoute! // route on the map
     var resultSearchController: UISearchController! // search result
     var favoriteRoute: Route! // favorite route
     var destination : CLLocation! // destination
-    var instructions : [PointOfInterest] = [] // instructions for main steps
-    var annotationMuseums : [PointOfInterest] = [] //  museums pins
-    var annotationTheaters : [PointOfInterest] = [] //  theaters pins
+    var poiHolder : PointOfInterestHolder! // POIs
     var isFirst : Bool!
+    
     var routeNodes: [SCNNode] = [] {
         didSet {
             oldValue.forEach { $0.removeFromParentNode() }
@@ -118,7 +116,7 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     }
     
     func clearMap(){
-        instructions = []
+        poiHolder = PointOfInterestHolder()
         myRoute = nil
         destination = nil
         map.removeAnnotations(map.annotations)
@@ -172,6 +170,7 @@ extension MapViewController{
 extension MapViewController: MKMapViewDelegate {
     func initMap(){
         navigationService = NavigationService()
+        poiHolder = PointOfInterestHolder()
         press = UILongPressGestureRecognizer(target: self, action: #selector(onMapTap(gesture:)))
         press.minimumPressDuration = 0.35
         map.showsUserLocation = true
@@ -221,7 +220,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func addMapAnnotations() {
-        instructions.forEach { instruction in
+        poiHolder.annotationInstructions.forEach { instruction in
             DispatchQueue.main.async {
                 self.map.addAnnotation(instruction)
                 self.map.addOverlay(MKCircle(center: instruction.coordinate, radius: 0.3))
@@ -351,7 +350,7 @@ extension MapViewController {
             for stepIndex in 0..<route.steps.count{
                 if route.steps[stepIndex].instructions != ""{
                     let poi : PointOfInterest = PointOfInterest(coordinate: route.steps[stepIndex].getLocation().coordinate, title: route.steps[stepIndex].instructions, color: .blue, image : UIImage())
-                    self.instructions.append(poi)
+                    self.poiHolder.annotationInstructions.append(poi)
                 }
             }
             self.navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
@@ -363,11 +362,11 @@ extension MapViewController {
             self.addMapAnnotations() // map
             self.routeNodes = self.navigationService.setNavigation(forRoute: route) // AR
             //AR step's labels
-            let nodes = self.instructions
+            let nodes : [CGPoint] = self.poiHolder.annotationInstructions
                 .map { self.navigationService.convert(scnView: self.sceneView, coordinate: $0.coordinate)} // convert all the coordinates to the AR suitable
                 .compactMap { $0 } // remove the nils
                 .map { CGPoint(position: $0)} // combine the points
-            self.instructionNodes = self.navigationService.setExtraNodes(nodes: nodes, objects: self.instructions)// AR
+            self.instructionNodes = self.navigationService.setExtraNodes(nodes: nodes, objects: self.poiHolder.annotationInstructions)// AR
             // zoom in to the current user's location
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
             let region = MKCoordinateRegion(center: SwiftLocation.Locator.currentLocation!.coordinate, span: span)
@@ -393,6 +392,7 @@ extension MapViewController{
                 .map { CGPoint(position: $0)} // combine the points
             for annotation in objects{
                 map.addAnnotation(annotation)
+                poiHolder.annotationMuseums.append(annotation)
             }
             museumNodes = navigationService.setExtraNodes(nodes: nodes, objects: objects)// AR
         }
@@ -414,6 +414,7 @@ extension MapViewController{
                 .map { CGPoint(position: $0)} // combine the points
             for annotation in objects{
                 map.addAnnotation(annotation)
+                poiHolder.annotationTheaters.append(annotation)
             }
             theaterNodes = navigationService.setExtraNodes(nodes: nodes, objects : objects)// AR
         }
@@ -428,10 +429,10 @@ extension MapViewController{
         clearButtons()
         museumNodes.removeAll()
         theaterNodes.removeAll()
-        for ob in annotationTheaters{
+        for ob in poiHolder.annotationTheaters{
             map.removeAnnotation(ob)
         }
-        for ob in annotationMuseums{
+        for ob in poiHolder.annotationMuseums{
             map.removeAnnotation(ob)
         }
     }

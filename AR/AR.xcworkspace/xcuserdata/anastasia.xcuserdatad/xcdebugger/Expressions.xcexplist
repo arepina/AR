@@ -3,10 +3,19 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "closure #1 in MapViewController.drawRouteInAR(destination:):MapViewController.swift">
+         contextName = "closure #1 in MapViewController.viewDidLoad():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "route.steps">
+               value = "SwiftLocation.Locator.currentLocation!.coordinate">
+            </PersistentString>
+            <PersistentString
+               value = "loc.horizontalAccuracy">
+            </PersistentString>
+            <PersistentString
+               value = "loc.coordinates">
+            </PersistentString>
+            <PersistentString
+               value = "self.nodes">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -28,80 +37,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapViewController.loadMuseums(_:):MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "UIColor.clear.cgColor">
-            </PersistentString>
-            <PersistentString
-               value = "museum.layer.shadowColor != UIColor.green.cgColor">
-            </PersistentString>
-            <PersistentString
-               value = "(sender as! UIButton).layer.shadowColor">
-            </PersistentString>
-            <PersistentString
-               value = "museum.layer.shadowColor">
-            </PersistentString>
-            <PersistentString
-               value = "UIColor.green.cgColor">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.drawRouteOnMap(destination:):MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "destination.coordinates!">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in NavigationService.calculateSteps(destination:request:completion:):NavigationService.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "response.routes ">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CLLocationManager.requestAuthorization(level:):Shared.swift">
-      </ContextState>
-      <ContextState
          contextName = "static ObjectsService.getObjects():ObjectsService.swift">
          <PersistentStrings>
             <PersistentString
                value = "(coordinates[0] as! NSArray)[0] as! Double">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "NavigationService.setNavigation(forRoute:):NavigationService.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in MapViewController.drawRouteOnMap(destination:):MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "error.debugDescription">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "static ObjectsService.readJson():ObjectsService.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in MapViewController.viewDidLoad():MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "SwiftLocation.Locator.currentLocation!.coordinate">
-            </PersistentString>
-            <PersistentString
-               value = "loc.horizontalAccuracy">
-            </PersistentString>
-            <PersistentString
-               value = "loc.coordinates">
-            </PersistentString>
-            <PersistentString
-               value = "self.nodes">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -135,12 +74,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MapViewController.viewDidLoad():MapViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.calculateLeg(for:and:):MapViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "locations">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.loadObjects():MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CLLocationManager.requestAuthorization(level:):Shared.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static ObjectsService.readJson():ObjectsService.swift">
       </ContextState>
       <ContextState
          contextName = "static Matrix.transformMatrix(for:originLocation:location:):Matrix.swift">
@@ -163,13 +114,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NavigationService.getLegs(route:labels:):NavigationService.swift">
+         contextName = "MapViewController.clearObjects(_:):MapViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "labels[currentLegIndex]">
-            </PersistentString>
-            <PersistentString
-               value = "storage.labels.index(of: labels[currentLegIndex])">
+               value = "poiHolder">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -185,6 +133,36 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MapViewController.drawRouteOnMap(destination:):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "destination.coordinates!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NavigationService.getLegs(route:labels:):NavigationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "labels[currentLegIndex]">
+            </PersistentString>
+            <PersistentString
+               value = "storage.labels.index(of: labels[currentLegIndex])">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in MapViewController.drawRouteInAR(destination:):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "route.steps">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NavigationService.setNavigation(forRoute:):NavigationService.swift">
+      </ContextState>
+      <ContextState
          contextName = "NavigationService.setExtraNodes(nodes:objects:):NavigationService.swift">
          <PersistentStrings>
             <PersistentString
@@ -193,7 +171,32 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapViewController.loadObjects():MapViewController.swift">
+         contextName = "MapViewController.loadMuseums(_:):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIColor.clear.cgColor">
+            </PersistentString>
+            <PersistentString
+               value = "museum.layer.shadowColor != UIColor.green.cgColor">
+            </PersistentString>
+            <PersistentString
+               value = "(sender as! UIButton).layer.shadowColor">
+            </PersistentString>
+            <PersistentString
+               value = "museum.layer.shadowColor">
+            </PersistentString>
+            <PersistentString
+               value = "UIColor.green.cgColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in NavigationService.calculateSteps(destination:request:completion:):NavigationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.routes ">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "static ExtraNavigationService.divideRoute(route:):ExtraNavigationService.swift">
@@ -206,6 +209,14 @@
             </PersistentString>
             <PersistentString
                value = "legs">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in MapViewController.drawRouteOnMap(destination:):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "error.debugDescription">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

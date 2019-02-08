@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D09BE532204687000EA3B73 /* Scalar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D09BE522204687000EA3B73 /* Scalar+Extension.swift */; };
+		5D1428CF220DC1C6009AC0BB /* PointOfInterestHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1428CE220DC1C6009AC0BB /* PointOfInterestHolder.swift */; };
 		5D1ED43F21A407DA008155D1 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1ED43E21A407DA008155D1 /* SideMenuTableViewController.swift */; };
 		5D1F126321AD3E0B007491F8 /* ConnectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F126221AD3E0B007491F8 /* ConnectionService.swift */; };
 		5D21CEA7219EC46300814983 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D21CEA6219EC46300814983 /* GoogleService-Info.plist */; };
@@ -78,6 +79,7 @@
 		073FD33836F3E58978A49137 /* Pods_AR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E03FF93E186225D640A1089 /* Pods-AR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR/Pods-AR.release.xcconfig"; sourceTree = "<group>"; };
 		5D09BE522204687000EA3B73 /* Scalar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scalar+Extension.swift"; sourceTree = "<group>"; };
+		5D1428CE220DC1C6009AC0BB /* PointOfInterestHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestHolder.swift; sourceTree = "<group>"; };
 		5D1ED43E21A407DA008155D1 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		5D1F126221AD3E0B007491F8 /* ConnectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionService.swift; sourceTree = "<group>"; };
 		5D21CEA6219EC46300814983 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				5D37A48F2201DB020052E772 /* CGLine.swift */,
 				5D37A493220204530052E772 /* Step.swift */,
 				5D37A4952202046E0052E772 /* Leg.swift */,
+				5D1428CE220DC1C6009AC0BB /* PointOfInterestHolder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				5D29215321AD9F2800836302 /* Route.swift in Sources */,
 				5D37A4902201DB020052E772 /* CGLine.swift in Sources */,
 				5D09BE532204687000EA3B73 /* Scalar+Extension.swift in Sources */,
+				5D1428CF220DC1C6009AC0BB /* PointOfInterestHolder.swift in Sources */,
 				5D1ED43F21A407DA008155D1 /* SideMenuTableViewController.swift in Sources */,
 				5D2A38E121B7DCA9002CEF19 /* NavigationService.swift in Sources */,
 				5D29BD5521B5814B00C8D4B0 /* PointOfInterest.swift in Sources */,
