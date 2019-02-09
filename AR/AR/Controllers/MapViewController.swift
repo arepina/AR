@@ -328,13 +328,12 @@ extension MapViewController {
     }
     
     @objc func onSceneTap() {
-        if view.contains(map){
-            map.removeFromSuperview()
-            buttons.removeFromSuperview()
+        if map.isHidden{
+            map.isHidden = false
+            buttons.isHidden = false
         }else{
-            sceneView.addSubview(map)
-            sceneView.addSubview(buttons)
-            //todo move the subviews
+            map.isHidden = true
+            buttons.isHidden = true            
         }
     }
     
