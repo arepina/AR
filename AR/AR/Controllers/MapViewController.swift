@@ -229,22 +229,15 @@ extension MapViewController: MKMapViewDelegate {
         }
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
         }
-        let pin = annotation as? PointOfInterest
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: "pin") as? MKPinAnnotationView
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-            pinView!.canShowCallout = true
-            pinView!.animatesDrop = false
-            pinView!.pinTintColor = pin!.color
-        }
-        else {
-            pinView!.annotation = annotation
-        }
-        return pinView!
+        let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        pinView.canShowCallout = true
+        pinView.animatesDrop = false
+        pinView.pinTintColor = UIColor.blue
+        return pinView
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) ->MKOverlayRenderer {
@@ -318,7 +311,7 @@ extension MapViewController: HandleMapSearch {
 extension MapViewController {
     func initAR(){
         sceneView = SceneLocationView()
-        sceneView.showsStatistics = true
+        sceneView.showsStatistics = false
         pressView = UITapGestureRecognizer(target: self, action: #selector(onSceneTap))
         sceneView.addGestureRecognizer(pressView)
         sceneView.run()

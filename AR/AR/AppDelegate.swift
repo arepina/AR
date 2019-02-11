@@ -54,12 +54,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let innerPage: LoginViewController = mainStoryboard.instantiateViewController(withIdentifier: "logInStoryBoard") as! LoginViewController
                 self.window?.rootViewController = innerPage
                 self.window?.makeKeyAndVisible()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    let topController = UIApplication.topViewController()
-                    let c = topController as! MapViewController
-                    c.performSegue(withIdentifier: "FavoriteNow", sender: nil)
+                if ConnectionService.isConnectedToNetwork(){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        let topController = UIApplication.topViewController()
+                        let c = topController as! MapViewController
+                        c.performSegue(withIdentifier: "FavoriteNow", sender: nil)
+                    }
+                }else{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {                       
+                        UIApplication.topViewController()!.showToast(message: "No Internet connection!", isMenu: false)
+                    }
                 }
-                
             }else{
                 let innerPage: LoginViewController = mainStoryboard.instantiateViewController(withIdentifier: "logInStoryBoard") as! LoginViewController
                 self.window?.rootViewController = innerPage
