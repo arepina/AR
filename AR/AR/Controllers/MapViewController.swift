@@ -314,6 +314,10 @@ extension MapViewController {
         sceneView.showsStatistics = false
         pressView = UITapGestureRecognizer(target: self, action: #selector(onSceneTap))
         sceneView.addGestureRecognizer(pressView)
+        sceneView.orientToTrueNorth = true
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
+        configuration.worldAlignment = .gravityAndHeading
         sceneView.run()
         view.addSubview(sceneView)
         view.addSubview(map)
