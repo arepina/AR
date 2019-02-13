@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.616503"
+            timestampString = "571749178.661617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "drawRouteInAR(destination:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.616904"
+            timestampString = "571749178.662069"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
             landmarkName = "museumClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.6171581"
+            timestampString = "571749178.662339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "mapView(_:rendererFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.617393"
+            timestampString = "571749178.6625741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
             landmarkName = "drawRouteInAR(destination:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,27 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.617632"
+            timestampString = "571749178.6628391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.617852"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
+            startingLineNumber = "588"
+            endingLineNumber = "588"
             landmarkName = "HandleMapSearch"
             landmarkType = "5">
          </BreakpointContent>
@@ -490,13 +474,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.618071"
+            timestampString = "571749178.663079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
-            landmarkName = "clearObjects(_:)"
-            landmarkType = "7">
+            startingLineNumber = "588"
+            endingLineNumber = "588"
+            landmarkName = "HandleMapSearch"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AR/Controllers/MapViewController.swift"
+            timestampString = "571749178.663308"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.6183521"
+            timestampString = "571749178.663626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
             landmarkName = "museumClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.618583"
+            timestampString = "571749178.663861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.618809"
+            timestampString = "571749178.664085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "onSceneTap()"
             landmarkType = "7">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.619027"
+            timestampString = "571749178.66431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
             landmarkName = "onSceneTap()"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,12 +682,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AR/Controllers/MapViewController.swift"
-            timestampString = "571657562.619239"
+            timestampString = "571749178.664546"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AR/Controllers/MapViewController.swift"
+            timestampString = "571749178.6647691"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
+            landmarkName = "renderer(_:didRenderScene:atTime:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

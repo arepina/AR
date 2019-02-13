@@ -14,6 +14,7 @@
 		5D21CEA7219EC46300814983 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D21CEA6219EC46300814983 /* GoogleService-Info.plist */; };
 		5D21F65A21BD1C230069F3AB /* museums.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D21F65921BD1C230069F3AB /* museums.json */; };
 		5D21F65E21BD27850069F3AB /* theaters.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D21F65D21BD27850069F3AB /* theaters.json */; };
+		5D2337412214155C0049290C /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2337402214155C0049290C /* NSAttributedString+Extension.swift */; };
 		5D238B9221FDDF1F00C2C05B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D238B9121FDDF1F00C2C05B /* Assets.xcassets */; };
 		5D238B9421FDDF4E00C2C05B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D238B9321FDDF4E00C2C05B /* Assets.xcassets */; };
 		5D24C40121B28CF30067DF7F /* ARNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D24C40021B28CF30067DF7F /* ARNode.swift */; };
@@ -85,6 +86,7 @@
 		5D21CEA6219EC46300814983 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D21F65921BD1C230069F3AB /* museums.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = museums.json; sourceTree = SOURCE_ROOT; };
 		5D21F65D21BD27850069F3AB /* theaters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theaters.json; sourceTree = SOURCE_ROOT; };
+		5D2337402214155C0049290C /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
 		5D238B9121FDDF1F00C2C05B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D238B9321FDDF4E00C2C05B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D24C40021B28CF30067DF7F /* ARNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARNode.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				5D37A4832201B4740052E772 /* CGPoint+Extension.swift */,
 				5D37A4912201F4D20052E772 /* Array+Extension.swift */,
 				5D09BE522204687000EA3B73 /* Scalar+Extension.swift */,
+				5D2337402214155C0049290C /* NSAttributedString+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				5D27E77521A463FB002AA4B5 /* SetupRouteViewController.swift in Sources */,
 				5D29BD5721B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				5D37A4922201F4D30052E772 /* Array+Extension.swift in Sources */,
+				5D2337412214155C0049290C /* NSAttributedString+Extension.swift in Sources */,
 				5D4410D321AC126100F893D4 /* FirebaseService.swift in Sources */,
 				5D264AEB21AEA53D00C9CE02 /* SettingsWalkthroughPageViewController.swift in Sources */,
 				5D8266432192F35500B7DF0F /* LoginViewController.swift in Sources */,

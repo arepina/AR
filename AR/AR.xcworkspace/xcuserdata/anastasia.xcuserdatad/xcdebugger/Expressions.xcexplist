@@ -45,6 +45,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MapViewController.renderer(_:didRenderScene:atTime:):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "routeFinishNode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.museumClick(_:):MapViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -120,6 +128,14 @@
       </ContextState>
       <ContextState
          contextName = "MapViewController.loadObjects():MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in MapViewController.renderer(_:didRenderScene:atTime:):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.routeDistanceLabel">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "static ObjectsService.getObjects(fileName:):ObjectsService.swift">
