@@ -32,3 +32,25 @@ extension CGPoint : Hashable{
         return sqrt(pow(self.x - point.x, 2) + pow(self.y - point.y, 2))
     }
 }
+
+extension CGRect {
+    var mid: CGPoint {
+        return CGPoint(x: midX, y: midY)
+    }
+    
+    var topLeft: CGPoint{
+        return origin
+    }
+    
+    var topRight: CGPoint{
+        return CGPoint(x: origin.x + width, y: origin.y)
+    }
+    
+    var bottomLeft: CGPoint{
+        return CGPoint(x: origin.x, y: origin.y + height)
+    }
+    
+    var bottomRight: CGPoint{
+        return CGPoint(x: origin.x + width, y: origin.y + height)
+    }
+}
