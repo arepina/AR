@@ -163,6 +163,11 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
         theaterBtn.layer.shadowOpacity = 0.0
         theaterBtn.layer.shadowRadius = 0.0
     }
+    
+    func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
+        initAR()
+        return true
+    }
 }
 
 extension MapViewController{
@@ -444,7 +449,11 @@ extension MapViewController {
         self.routeFinishNode!.position = route.last!.positionInAR
         
         self.routeFinishView = UIView()
-        self.routeFinishView!.backgroundColor = UIColor.red
+        let imageName = "finish"
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image!)
+        imageView.frame = CGRect(x: -10, y: -10, width: 64, height: 64)
+        self.routeFinishView!.addSubview(imageView)
         
         self.routeDistanceLabel = UILabel()
         self.routeDistanceLabel!.textColor = .white
@@ -486,6 +495,7 @@ extension MapViewController {
                 farDistanceSize: 50.0
             )
             let screenMidToProjectionLine = CGLine(point1: UIScreen.main.bounds.mid, point2: projectionPoint)
+            
             routeFinishView.isHidden = !(positionInPOV.z < 0 && screenMidToProjectionLine.intersection(withRect: UIScreen.main.bounds) == nil)
             routeDistanceLabel.isHidden = routeFinishView.isHidden
             
