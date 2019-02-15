@@ -125,7 +125,7 @@
                                 <rect key="frame" x="0.0" y="-24" width="375" height="44"/>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QOB-De-7Qt">
-                                <rect key="frame" x="343" y="376" width="32" height="180"/>
+                                <rect key="frame" x="343" y="376" width="32" height="217"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVN-Ti-YWS">
                                         <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -182,9 +182,19 @@
                                             <action selector="theatersClick:" destination="RhS-nh-a7z" eventType="touchUpInside" id="gE8-L2-VJo"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Hq-2L-u2m">
+                                        <rect key="frame" x="0.0" y="185" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="3xq-Mr-eTj"/>
+                                            <constraint firstAttribute="height" constant="32" id="atg-FY-Pa5"/>
+                                        </constraints>
+                                        <state key="normal" image="refresh"/>
+                                        <connections>
+                                            <action selector="refreshRoute:" destination="RhS-nh-a7z" eventType="touchUpInside" id="ZMs-4D-0kA"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="1Xs-xb-gEq"/>
                                     <constraint firstAttribute="width" constant="32" id="XKi-yW-aVE"/>
                                 </constraints>
                             </stackView>
@@ -199,7 +209,6 @@
                             <constraint firstItem="U0s-TX-04Z" firstAttribute="leading" secondItem="xmm-lo-nvL" secondAttribute="leading" id="H7s-PA-vTP"/>
                             <constraint firstItem="xmm-lo-nvL" firstAttribute="top" secondItem="U0s-TX-04Z" secondAttribute="bottom" id="KdW-hf-G9s"/>
                             <constraint firstItem="U0s-TX-04Z" firstAttribute="width" secondItem="czO-bf-yN6" secondAttribute="width" id="NRs-iU-Ocy"/>
-                            <constraint firstItem="xmm-lo-nvL" firstAttribute="top" secondItem="U0s-TX-04Z" secondAttribute="bottom" id="ckr-3X-Awi"/>
                             <constraint firstItem="7NS-B3-tgp" firstAttribute="bottom" secondItem="7DC-X3-elq" secondAttribute="top" id="fl2-i3-9RG"/>
                             <constraint firstItem="QOB-De-7Qt" firstAttribute="top" secondItem="U0s-TX-04Z" secondAttribute="bottom" constant="9" id="kYd-8p-f9T"/>
                             <constraint firstItem="xmm-lo-nvL" firstAttribute="width" secondItem="czO-bf-yN6" secondAttribute="width" id="kkj-2f-jzj"/>
@@ -243,6 +252,7 @@
                         <outlet property="buttons" destination="QOB-De-7Qt" id="AC3-3b-Th4"/>
                         <outlet property="map" destination="xmm-lo-nvL" id="5Jk-tH-Rud"/>
                         <outlet property="museumBtn" destination="hGA-OT-H3W" id="11B-wU-b9C"/>
+                        <outlet property="refresh" destination="7Hq-2L-u2m" id="69j-36-1gs"/>
                         <outlet property="sceneView" destination="U0s-TX-04Z" id="P6I-QD-FmS"/>
                         <outlet property="theaterBtn" destination="1f3-MQ-i4v" id="bnk-nz-Gbq"/>
                         <segue destination="W3L-WY-07b" kind="show" identifier="FavoriteNow" id="5Zg-9u-bmO"/>
@@ -591,6 +601,7 @@
         <image name="intro" width="1080" height="1920"/>
         <image name="menu" width="32" height="32"/>
         <image name="museum" width="32" height="32"/>
+        <image name="refresh" width="32" height="32"/>
         <image name="theater" width="32" height="32"/>
         <image name="user" width="32" height="32"/>
     </resources>

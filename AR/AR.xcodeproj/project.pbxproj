@@ -49,6 +49,11 @@
 		5D82664B2192F35700B7DF0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8266492192F35700B7DF0F /* LaunchScreen.storyboard */; };
 		5DA7C8F521C665F200ADEB36 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7C8F421C665F200ADEB36 /* String+Extension.swift */; };
 		5DCF24DB21BAAFB2002E8C6B /* ObjectsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF24DA21BAAFB2002E8C6B /* ObjectsService.swift */; };
+		5DCFA0CF2216CCAE002F1983 /* MapViewController+Extension+Excursion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCFA0CE2216CCAE002F1983 /* MapViewController+Extension+Excursion.swift */; };
+		5DCFA0D12216CCD9002F1983 /* MapViewController+Extension+AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCFA0D02216CCD9002F1983 /* MapViewController+Extension+AR.swift */; };
+		5DCFA0D32216CCFD002F1983 /* MapViewController+Extension+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCFA0D22216CCFD002F1983 /* MapViewController+Extension+Map.swift */; };
+		5DCFA0D52216CD21002F1983 /* MapViewController+Extension+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCFA0D42216CD21002F1983 /* MapViewController+Extension+Search.swift */; };
+		5DCFA0D72216CDD9002F1983 /* MapViewController+Extension+Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCFA0D62216CDD9002F1983 /* MapViewController+Extension+Favorite.swift */; };
 		6CC2103D64278BEE3BE48B53 /* Pods_AR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073FD33836F3E58978A49137 /* Pods_AR.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +131,11 @@
 		5D82664C2192F35700B7DF0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DA7C8F421C665F200ADEB36 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		5DCF24DA21BAAFB2002E8C6B /* ObjectsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsService.swift; sourceTree = "<group>"; };
+		5DCFA0CE2216CCAE002F1983 /* MapViewController+Extension+Excursion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+Extension+Excursion.swift"; sourceTree = "<group>"; };
+		5DCFA0D02216CCD9002F1983 /* MapViewController+Extension+AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+Extension+AR.swift"; sourceTree = "<group>"; };
+		5DCFA0D22216CCFD002F1983 /* MapViewController+Extension+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+Extension+Map.swift"; sourceTree = "<group>"; };
+		5DCFA0D42216CD21002F1983 /* MapViewController+Extension+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+Extension+Search.swift"; sourceTree = "<group>"; };
+		5DCFA0D62216CDD9002F1983 /* MapViewController+Extension+Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+Extension+Favorite.swift"; sourceTree = "<group>"; };
 		90D618CD6A98209999A54CDD /* Pods-AR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR/Pods-AR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +205,11 @@
 				5D4410D021AC0C9000F893D4 /* RoutesTableViewCell.swift */,
 				5D1ED43E21A407DA008155D1 /* SideMenuTableViewController.swift */,
 				5D27E77421A463FB002AA4B5 /* SetupRouteViewController.swift */,
+				5DCFA0CE2216CCAE002F1983 /* MapViewController+Extension+Excursion.swift */,
+				5DCFA0D02216CCD9002F1983 /* MapViewController+Extension+AR.swift */,
+				5DCFA0D22216CCFD002F1983 /* MapViewController+Extension+Map.swift */,
+				5DCFA0D42216CD21002F1983 /* MapViewController+Extension+Search.swift */,
+				5DCFA0D62216CDD9002F1983 /* MapViewController+Extension+Favorite.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -526,11 +541,13 @@
 			files = (
 				5D4410D121AC0C9000F893D4 /* RoutesTableViewCell.swift in Sources */,
 				5D37A494220204530052E772 /* Step.swift in Sources */,
+				5DCFA0D32216CCFD002F1983 /* MapViewController+Extension+Map.swift in Sources */,
 				5D27E77521A463FB002AA4B5 /* SetupRouteViewController.swift in Sources */,
 				5D29BD5721B5843000C8D4B0 /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				5D37A4922201F4D30052E772 /* Array+Extension.swift in Sources */,
 				5D2337412214155C0049290C /* NSAttributedString+Extension.swift in Sources */,
 				5D4410D321AC126100F893D4 /* FirebaseService.swift in Sources */,
+				5DCFA0D52216CD21002F1983 /* MapViewController+Extension+Search.swift in Sources */,
 				5D264AEB21AEA53D00C9CE02 /* SettingsWalkthroughPageViewController.swift in Sources */,
 				5D8266432192F35500B7DF0F /* LoginViewController.swift in Sources */,
 				5DA7C8F521C665F200ADEB36 /* String+Extension.swift in Sources */,
@@ -539,6 +556,7 @@
 				5D29BD5321B5812800C8D4B0 /* MKRouteStep+Extension.swift in Sources */,
 				5D53BC3F21FF22580057E2D5 /* UIApplication+Extension.swift in Sources */,
 				5DCF24DB21BAAFB2002E8C6B /* ObjectsService.swift in Sources */,
+				5DCFA0D72216CDD9002F1983 /* MapViewController+Extension+Favorite.swift in Sources */,
 				5D2AAD0721A2A15000B9A4ED /* RoutesViewController.swift in Sources */,
 				5D25F6CC21A3326A004287A1 /* MapViewController.swift in Sources */,
 				5D2AAD0321A29FFC00B9A4ED /* SettingsViewController.swift in Sources */,
@@ -546,7 +564,9 @@
 				5D24C40621B29C160067DF7F /* UIViewController+Extension.swift in Sources */,
 				5D37A4882201DA060052E772 /* Vector.swift in Sources */,
 				5D37A4962202046E0052E772 /* Leg.swift in Sources */,
+				5DCFA0CF2216CCAE002F1983 /* MapViewController+Extension+Excursion.swift in Sources */,
 				5D24C40121B28CF30067DF7F /* ARNode.swift in Sources */,
+				5DCFA0D12216CCD9002F1983 /* MapViewController+Extension+AR.swift in Sources */,
 				5D29215321AD9F2800836302 /* Route.swift in Sources */,
 				5D37A4902201DB020052E772 /* CGLine.swift in Sources */,
 				5D09BE532204687000EA3B73 /* Scalar+Extension.swift in Sources */,
