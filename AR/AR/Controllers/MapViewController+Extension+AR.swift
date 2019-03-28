@@ -201,6 +201,7 @@ extension MapViewController {
             return closeDistanceSize
         } else {
             let delta = farDistanceSize - closeDistanceSize
+            guard farDistance - closeDistance != 0 else { assert(false); return 0.0 }
             let percent: CGFloat = ((distance - closeDistance) / (farDistance - closeDistance))
             let size = closeDistanceSize + delta * percent
             return size
