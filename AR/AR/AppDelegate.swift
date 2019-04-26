@@ -37,63 +37,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        let urlPath : String = url.path as String
-        let urlHost : String = url.host as! String
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        if(urlHost != "host")
+        if(url.host != "host")
         {
             print("Host is not correct")
             return false
         }        
-        if(urlPath == "/search"){
-            let innerPage: LoginViewController = mainStoryboard.instantiateViewController(withIdentifier: "logInStoryBoard") as! LoginViewController
-            self.window?.rootViewController = innerPage
-            self.window?.makeKeyAndVisible()
-        } else if (urlPath == "/favorite"){
-            if Auth.auth().currentUser != nil { // check if user already logged in
-                let innerPage: LoginViewController = mainStoryboard.instantiateViewController(withIdentifier: "logInStoryBoard") as! LoginViewController
-                self.window?.rootViewController = innerPage
-                self.window?.makeKeyAndVisible()
-                if ConnectionService.isConnectedToNetwork(){
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        let topController = UIApplication.topViewController()
-                        let c = topController as! MapViewController
-                        c.performSegue(withIdentifier: "FavoriteNow", sender: nil)
-                    }
-                }else{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {                       
-                        UIApplication.topViewController()!.showToast(message: "No Internet connection!", isMenu: false)
-                    }
-                }
-            }else{
-                let innerPage: LoginViewController = mainStoryboard.instantiateViewController(withIdentifier: "logInStoryBoard") as! LoginViewController
-                self.window?.rootViewController = innerPage
-                self.window?.makeKeyAndVisible()
-            }
+        if(url.path == "/search"){
+            Widget.search(mainStoryboard: mainStoryboard)
+        } else if (url.path == "/favorite"){
+            Widget.favorite(mainStoryboard: mainStoryboard)
         }
-        else if (urlPath == "/museum"){
-            let innerPage: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "mapNav") as! UINavigationController
-            self.window?.rootViewController = innerPage
-            self.window?.makeKeyAndVisible()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                let topController = UIApplication.topViewController()
-                let c = topController as! MapViewController
-                c.museumBtn.sendActions(for: .touchUpInside)
-            }
+        else if (url.path == "/museum"){
+            Widget.museum(mainStoryboard: mainStoryboard)
         }
-        else if (urlPath == "/theater"){
-            let innerPage: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "mapNav") as! UINavigationController
-            self.window?.rootViewController = innerPage
-            self.window?.makeKeyAndVisible()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                let topController = UIApplication.topViewController()
-                let c = topController as! MapViewController
-                c.theaterBtn.sendActions(for: .touchUpInside)
-            }
+        else if (url.path == "/theater"){
+            Widget.theater(mainStoryboard: mainStoryboard)
         }
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,14 +45,14 @@
                                             <action selector="introStateChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="9q1-Vg-Mbn"/>
                                         </connections>
                                     </segmentedControl>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="qwer@mail.com" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Cb-GX-Ey1">
-                                        <rect key="frame" x="0.0" y="201" width="192" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Cb-GX-Ey1">
+                                        <rect key="frame" x="10" y="201" width="172" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CQd-bX-98d">
-                                        <rect key="frame" x="0.0" y="261" width="192" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CQd-bX-98d">
+                                        <rect key="frame" x="10" y="261" width="172" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -69,12 +69,12 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="CQd-bX-98d" firstAttribute="leading" secondItem="0oZ-W2-Nkj" secondAttribute="leading" constant="10" id="3Ht-U2-46c"/>
                                     <constraint firstItem="ykT-wy-Yi0" firstAttribute="leading" secondItem="0oZ-W2-Nkj" secondAttribute="leading" id="5JB-2y-M63"/>
-                                    <constraint firstItem="9Cb-GX-Ey1" firstAttribute="leading" secondItem="0oZ-W2-Nkj" secondAttribute="leading" id="FoW-pe-8wJ"/>
-                                    <constraint firstItem="CQd-bX-98d" firstAttribute="leading" secondItem="0oZ-W2-Nkj" secondAttribute="leading" id="Qok-cl-Dxv"/>
-                                    <constraint firstAttribute="trailing" secondItem="CQd-bX-98d" secondAttribute="trailing" id="YeQ-GF-9RI"/>
+                                    <constraint firstAttribute="trailing" secondItem="CQd-bX-98d" secondAttribute="trailing" constant="10" id="AHS-t9-f2E"/>
+                                    <constraint firstItem="9Cb-GX-Ey1" firstAttribute="leading" secondItem="0oZ-W2-Nkj" secondAttribute="leading" constant="10" id="Xen-kz-D5Y"/>
                                     <constraint firstAttribute="trailing" secondItem="ykT-wy-Yi0" secondAttribute="trailing" id="a9U-WJ-dqd"/>
-                                    <constraint firstAttribute="trailing" secondItem="9Cb-GX-Ey1" secondAttribute="trailing" id="rbd-vQ-c2W"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Cb-GX-Ey1" secondAttribute="trailing" constant="10" id="fK6-42-5by"/>
                                 </constraints>
                             </stackView>
                         </subviews>

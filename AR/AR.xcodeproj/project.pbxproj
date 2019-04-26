@@ -48,6 +48,8 @@
 		5D8266462192F35500B7DF0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8266442192F35500B7DF0F /* Main.storyboard */; };
 		5D82664B2192F35700B7DF0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8266492192F35700B7DF0F /* LaunchScreen.storyboard */; };
 		5DA7C8F521C665F200ADEB36 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7C8F421C665F200ADEB36 /* String+Extension.swift */; };
+		5DAF41412273162A002759DF /* LegsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF41402273162A002759DF /* LegsService.swift */; };
+		5DAF414322731BC5002759DF /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF414222731BC5002759DF /* Widget.swift */; };
 		5DCF24DB21BAAFB2002E8C6B /* ObjectsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF24DA21BAAFB2002E8C6B /* ObjectsService.swift */; };
 		5DCFA0CF2216CCAE002F1983 /* MapViewController+Extension+Excursion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCFA0CE2216CCAE002F1983 /* MapViewController+Extension+Excursion.swift */; };
 		5DCFA0D12216CCD9002F1983 /* MapViewController+Extension+AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCFA0D02216CCD9002F1983 /* MapViewController+Extension+AR.swift */; };
@@ -130,6 +132,8 @@
 		5D82664A2192F35700B7DF0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D82664C2192F35700B7DF0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DA7C8F421C665F200ADEB36 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		5DAF41402273162A002759DF /* LegsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegsService.swift; sourceTree = "<group>"; };
+		5DAF414222731BC5002759DF /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		5DCF24DA21BAAFB2002E8C6B /* ObjectsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsService.swift; sourceTree = "<group>"; };
 		5DCFA0CE2216CCAE002F1983 /* MapViewController+Extension+Excursion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+Extension+Excursion.swift"; sourceTree = "<group>"; };
 		5DCFA0D02216CCD9002F1983 /* MapViewController+Extension+AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+Extension+AR.swift"; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				5D1F126221AD3E0B007491F8 /* ConnectionService.swift */,
 				5D4410D221AC126100F893D4 /* FirebaseService.swift */,
 				5DCF24DA21BAAFB2002E8C6B /* ObjectsService.swift */,
+				5DAF41402273162A002759DF /* LegsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				5D238B9321FDDF4E00C2C05B /* Assets.xcassets */,
 				5D36D96A21FC8A43002E5345 /* AR.entitlements */,
 				5D82663E2192F35500B7DF0F /* AppDelegate.swift */,
+				5DAF414222731BC5002759DF /* Widget.swift */,
 				5D21F65921BD1C230069F3AB /* museums.json */,
 				5D21F65D21BD27850069F3AB /* theaters.json */,
 				5D264AE921AE9E8500C9CE02 /* Storyboard */,
@@ -350,11 +356,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Anastasia;
 				TargetAttributes = {
 					5D36D95721FC82EA002E5345 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -363,7 +370,7 @@
 					};
 					5D82663A2192F35500B7DF0F = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -560,7 +567,9 @@
 				5D2AAD0721A2A15000B9A4ED /* RoutesViewController.swift in Sources */,
 				5D25F6CC21A3326A004287A1 /* MapViewController.swift in Sources */,
 				5D2AAD0321A29FFC00B9A4ED /* SettingsViewController.swift in Sources */,
+				5DAF414322731BC5002759DF /* Widget.swift in Sources */,
 				5D37A4842201B4740052E772 /* CGPoint+Extension.swift in Sources */,
+				5DAF41412273162A002759DF /* LegsService.swift in Sources */,
 				5D24C40621B29C160067DF7F /* UIViewController+Extension.swift in Sources */,
 				5D37A4882201DA060052E772 /* Vector.swift in Sources */,
 				5D37A4962202046E0052E772 /* Leg.swift in Sources */,
@@ -632,7 +641,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Repina.AR.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -653,7 +662,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -773,7 +782,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 				WARNING_CFLAGS = (
@@ -803,7 +811,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Repina.AR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -827,7 +835,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Repina.AR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

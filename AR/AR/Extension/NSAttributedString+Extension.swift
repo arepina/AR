@@ -12,16 +12,16 @@ import SceneKit
 
 public extension NSAttributedString {
     
-    public func boundingRect(size: CGSize) -> CGRect {
+    func boundingRect(size: CGSize) -> CGRect {
         let rect = self.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
         return rect.integral
     }
     
-    public func boundingRect(width: CGFloat) -> CGRect {
+    func boundingRect(width: CGFloat) -> CGRect {
         return boundingRect(size: CGSize(width: width, height: .infinity))
     }
     
-    public func boundingSize(width: CGFloat) -> CGSize {
+    func boundingSize(width: CGFloat) -> CGSize {
         return boundingRect(width: width).size
     }
     

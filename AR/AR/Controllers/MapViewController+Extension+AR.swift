@@ -87,6 +87,7 @@ extension MapViewController {
                 let step: MKMapPoint = route.polyline.points()[stepIndex]
                 steps.append(step.coordinate)
             }
+            //Map steps
             for stepIndex in 0..<route.steps.count{
                 if route.steps[stepIndex].instructions != ""{
                     let poi : PointOfInterest = PointOfInterest(coordinate: route.steps[stepIndex].getLocation().coordinate, title: route.steps[stepIndex].instructions, color: .blue, image : UIImage())
@@ -152,7 +153,8 @@ extension MapViewController {
         let annotationProjection = sceneView.projectPoint(annotationPositionInWorld)
         let annotationProjectionPoint = CGPoint(x: CGFloat(annotationProjection.x), y: CGFloat(annotationProjection.y))
         let rotationAngle = Vector.y.angle(with: (Vector(annotationProjectionPoint) - Vector(projectionPoint)))
-        let distance = round(currentLocation!.distance(from: finishLocation))
+        var distance = round(currentLocation!.distance(from: finishLocation))
+        distance = distance.isNaN ? 0.0 : distance
         
         DispatchQueue.main.async { [weak self] in
             guard let slf = self else { return }

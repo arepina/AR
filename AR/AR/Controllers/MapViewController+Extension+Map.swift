@@ -13,17 +13,16 @@ import SceneKit
 import ARKit
 import MapKit
 import SwiftLocation
+import Crashlytics
 
 extension MapViewController: MKMapViewDelegate {
     func initMap(){
         navigationService = NavigationService()
         poiHolder = PointOfInterestHolder()
         let pressMap : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(onMapPress(gesture:)))
-        //        let tapMap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onMapTap))
         pressMap.minimumPressDuration = 0.35
         map.showsUserLocation = true
         map.addGestureRecognizer(pressMap)
-        //        map.addGestureRecognizer(tapMap)
         map.delegate = self
     }
     
@@ -37,7 +36,13 @@ extension MapViewController: MKMapViewDelegate {
             let coordinate: CLLocationCoordinate2D = map.convert(touchPoint, toCoordinateFrom: map)
             let lat:Double = coordinate.latitude
             let lon:Double = coordinate.longitude
-            let dest : Route = Route(p: "", c: String(lat) + ";" + String(lon), k: "")
+            let from = String(SwiftLocation.Locator.currentLocation!.coordinate.latitude) + ";" + String(SwiftLocation.Locator.currentLocation!.coordinate.longitude)
+            let to = String(lat) + ";" + String(lon)
+            let dest : Route = Route(p: "", c: to, k: "")
+            print(from)
+            print(to)
+            CLSLogv("from: %@", getVaList([from]))
+            CLSLogv("to: %@", getVaList([to]))
             destination = CLLocation(latitude: lat, longitude: lon)
             drawRouteOnMap(destination: dest)
             drawRouteInAR(destination: dest)
@@ -45,24 +50,7 @@ extension MapViewController: MKMapViewDelegate {
             showToast(message: "No Internet connection!", isMenu: false)
         }
     }
-    
-    //    @objc func onMapTap(gesture: UIGestureRecognizer) {
-    //        if sceneView.isHidden{
-    //            sceneView.isHidden = false
-    //            map.frame = CGRect(
-    //                x: 0,
-    //                y: self.view.frame.size.height / 2,
-    //                width: self.view.frame.size.width,
-    //                height: self.view.frame.size.height / 2)
-    //        }else{
-    //            sceneView.isHidden = true
-    //            map.frame = CGRect(
-    //                x: 0,
-    //                y: 0,
-    //                width: self.view.frame.size.width,
-    //                height: self.view.frame.size.height)
-    //        }
-    //    }
+
     
     @IBAction func clearMap(_ sender: Any) {
         clear()

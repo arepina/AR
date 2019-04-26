@@ -64,7 +64,7 @@ internal class SafeList<Value: Equatable> {
 	@discardableResult
 	public func remove(_ item: Value) -> Bool {
 		return self.dispatchQueue.sync {
-			guard let idx = self._list.index(of: item) else { return false }
+			guard let idx = self._list.firstIndex(of: item) else { return false }
 			self._list.remove(at: idx)
 			return true
 		}
@@ -76,7 +76,7 @@ internal class SafeList<Value: Equatable> {
 	/// - Returns: valid `Int` if item is in the list, `nil` if does not exists.
 	public func index(of item: Value) -> Int? {
 		return self.dispatchQueue.sync {
-			guard let idx = self._list.index(of: item) else { return nil }
+			guard let idx = self._list.firstIndex(of: item) else { return nil }
 			return idx
 		}
 	}
