@@ -9,14 +9,12 @@
 import UIKit
 import ARKit
 import CoreLocation
-import ARCL
 
 class ARNode: SCNNode {
     var location: CLLocation! // postion in real world
     var distance: Double! // distance of the step
     var title: String! // title of the step
     var image: UIImage! // image
-    var annotationNode : LocationAnnotationNode!
     
     override init() {
         super.init()

@@ -44,15 +44,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }        
         if(url.path == "/search"){
-            Widget.search(mainStoryboard: mainStoryboard)
+            Widget.search(mainStoryboard: mainStoryboard, window: &window)
         } else if (url.path == "/favorite"){
-            Widget.favorite(mainStoryboard: mainStoryboard)
+            Widget.favorite(mainStoryboard: mainStoryboard, window: &window)
         }
         else if (url.path == "/museum"){
-            Widget.museum(mainStoryboard: mainStoryboard)
+            Widget.museum(mainStoryboard: mainStoryboard, window: &window)
         }
         else if (url.path == "/theater"){
-            Widget.theater(mainStoryboard: mainStoryboard)
+            Widget.theater(mainStoryboard: mainStoryboard, window: &window)
         }
         return true
     }

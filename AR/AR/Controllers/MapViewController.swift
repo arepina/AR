@@ -15,8 +15,8 @@ import CoreLocation
 import Firebase
 import FirebaseDatabase
 import SwiftLocation
-import ARCL
 import SwiftSpinner
+import ARCL
 
 class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegate{
     @IBOutlet var museumBtn: UIButton! // museum btn

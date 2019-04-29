@@ -6,20 +6,21 @@
 //  Copyright © 2019 Anastasia. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import Firebase
 
 class Widget{
-    static func search(mainStoryboard: UIStoryboard){
+    static func search(mainStoryboard: UIStoryboard, window: inout UIWindow?){
         let innerPage: LoginViewController = mainStoryboard.instantiateViewController(withIdentifier: "logInStoryBoard") as! LoginViewController
-        self.window?.rootViewController = innerPage
-        self.window?.makeKeyAndVisible()
+        window?.rootViewController = innerPage
+        window?.makeKeyAndVisible()
     }
     
-    static func favorite(mainStoryboard: UIStoryboard){
+    static func favorite(mainStoryboard: UIStoryboard, window: inout UIWindow?){
         if Auth.auth().currentUser != nil { // check if user already logged in
             let innerPage: LoginViewController = mainStoryboard.instantiateViewController(withIdentifier: "logInStoryBoard") as! LoginViewController
-            self.window?.rootViewController = innerPage
-            self.window?.makeKeyAndVisible()
+            window?.rootViewController = innerPage
+            window?.makeKeyAndVisible()
             if ConnectionService.isConnectedToNetwork(){
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     let topController = UIApplication.topViewController()
@@ -33,15 +34,15 @@ class Widget{
             }
         }else{
             let innerPage: LoginViewController = mainStoryboard.instantiateViewController(withIdentifier: "logInStoryBoard") as! LoginViewController
-            self.window?.rootViewController = innerPage
-            self.window?.makeKeyAndVisible()
+            window?.rootViewController = innerPage
+            window?.makeKeyAndVisible()
         }
     }
     
-    static func museum(mainStoryboard: UIStoryboard){
+    static func museum(mainStoryboard: UIStoryboard, window: inout UIWindow?){
         let innerPage: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "mapNav") as! UINavigationController
-        self.window?.rootViewController = innerPage
-        self.window?.makeKeyAndVisible()
+        window?.rootViewController = innerPage
+        window?.makeKeyAndVisible()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             let topController = UIApplication.topViewController()
             let c = topController as! MapViewController
@@ -49,10 +50,10 @@ class Widget{
         }
     }
     
-    static func theater(mainStoryboard: UIStoryboard){
+    static func theater(mainStoryboard: UIStoryboard, window: inout UIWindow?){
         let innerPage: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "mapNav") as! UINavigationController
-        self.window?.rootViewController = innerPage
-        self.window?.makeKeyAndVisible()
+        window?.rootViewController = innerPage
+        window?.makeKeyAndVisible()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             let topController = UIApplication.topViewController()
             let c = topController as! MapViewController

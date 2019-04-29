@@ -11,7 +11,6 @@ import CoreLocation
 import SceneKit
 import ARKit
 import MapKit
-import ARCL
 
 class NavigationService{
     var updatedLocations: [CLLocation] = [] // store all the new location updates from Locator.subscribePosition
