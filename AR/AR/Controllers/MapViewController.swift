@@ -104,6 +104,8 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
             initAR()
             initSearch()
             initMap()
+            NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.willEnterForegroundNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
             Locator.requestAuthorizationIfNeeded(.always)
             Locator.subscribePosition(accuracy: .city, onUpdate: { loc in
                 if(self.isFirst){
@@ -170,5 +172,14 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
         initAR()
         return true
+    }
+    
+    @objc func applicationDidBecomeActive(notification: NSNotification) {
+        print("ACTIVE")
+    }
+    
+    @objc func applicationDidEnterBackground(notification: NSNotification) {
+        print("BACKGROUND")
+        clear()
     }
 }

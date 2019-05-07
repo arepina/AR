@@ -112,6 +112,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
   - SideMenu (5.0.3)
+  - SwiftExceptionCatcher (1.2)
   - SwiftLocation (3.2.3):
     - SwiftyJSON (~> 4.0.0-alpha.1)
   - SwiftSpinner (1.6.2)
@@ -126,6 +127,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - SideMenu
+  - SwiftExceptionCatcher (from `https://github.com/RedRoma/SwiftExceptionCatcher.git`)
   - SwiftLocation (~> 3.2.3)
   - SwiftSpinner
 
@@ -156,6 +158,15 @@ SPEC REPOS:
     - SwiftSpinner
     - SwiftyJSON
 
+EXTERNAL SOURCES:
+  SwiftExceptionCatcher:
+    :git: https://github.com/RedRoma/SwiftExceptionCatcher.git
+
+CHECKOUT OPTIONS:
+  SwiftExceptionCatcher:
+    :commit: 35caf5795cbd2e6452dfad18a5b6900e4cf0ffff
+    :git: https://github.com/RedRoma/SwiftExceptionCatcher.git
+
 SPEC CHECKSUMS:
   ARCL: 5fd2b0d7aabf91f15dbc0e8c510b25516b8a755a
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
@@ -178,10 +189,11 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
+  SwiftExceptionCatcher: 2d5b5f61c52c7cd6df2a7c8c60c864be791f78bb
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: fcc7c4d1a5fc88d3eb8af8ae1d4af93596ac3758
+PODFILE CHECKSUM: 596a2d1db30f3a07768947dc3f78f5a745ed541b
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

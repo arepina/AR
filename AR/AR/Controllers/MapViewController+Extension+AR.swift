@@ -14,6 +14,8 @@ import ARKit
 import MapKit
 import SwiftLocation
 import ARCL
+import Crashlytics
+import SwiftExceptionCatcher
 
 extension MapViewController {
     func initAR(){
@@ -146,7 +148,7 @@ extension MapViewController {
         guard let pointOfView = renderer.pointOfView else { return }
         
         let projection = sceneView.projectPoint(routeFinishNode.worldPosition)
-        let projectionPoint = CGPoint(x: CGFloat(projection.x), y: CGFloat(projection.y))
+        var projectionPoint = CGPoint(x: CGFloat(projection.x), y: CGFloat(projection.y))
         let positionInPOV = parent.convertPosition(routeFinishNode.position, to: pointOfView)
         
         let annotationPositionInWorld = routeFinishNode.convertPosition(SCNVector3Make(0.0, 1.0, 0.0), to: nil)
@@ -155,39 +157,55 @@ extension MapViewController {
         let rotationAngle = Vector.y.angle(with: (Vector(annotationProjectionPoint) - Vector(projectionPoint)))
         var distance = round(currentLocation!.distance(from: finishLocation))
         distance = distance.isNaN ? 0.0 : distance
-        
-        DispatchQueue.main.async { [weak self] in
-            guard let slf = self else { return }
-            guard let routeFinishView = slf.routeFinishView else { return }
-            guard let routeDistanceLabel = slf.routeDistanceLabel else { return }
-            
-            let placemarkSize = slf.placemarkSize(
-                forDistance: CGFloat(distance),
-                closeDistance: 10.0,
-                farDistance: 25.0,
-                closeDistanceSize: 100.0,
-                farDistanceSize: 50.0
-            )
-            let screenMidToProjectionLine = CGLine(point1: UIScreen.main.bounds.mid, point2: projectionPoint)
-            
-            routeFinishView.isHidden = !(positionInPOV.z < 0 && screenMidToProjectionLine.intersection(withRect: UIScreen.main.bounds) == nil)
-            routeDistanceLabel.isHidden = routeFinishView.isHidden
-            
-            routeFinishView.center = projectionPoint
-            routeFinishView.bounds.size = CGSize(width: placemarkSize, height: placemarkSize)
-            routeFinishView.layer.cornerRadius = placemarkSize / 2
-            
-            let distanceAttrStr = NSMutableAttributedString(string: "\(distance) м", attributes: [
-                .strokeColor : UIColor.black,
-                .foregroundColor : UIColor.white,
-                .strokeWidth : -1.0,
-                .font : UIFont.boldSystemFont(ofSize: 32.0)
-                ])
-            routeDistanceLabel.attributedText = distanceAttrStr
-            routeDistanceLabel.center = projectionPoint
-            let size = distanceAttrStr.boundingSize(width: .greatestFiniteMagnitude)
-            routeDistanceLabel.bounds.size = size
-            routeDistanceLabel.transform = CGAffineTransform(rotationAngle: CGFloat(rotationAngle - .pi))
+        if(projectionPoint.x.isNaN){
+            projectionPoint.x = 0
+        }
+        if(projectionPoint.y.isNaN){
+            projectionPoint.y = 0
+        }
+        do{
+            try tryOp() {
+                DispatchQueue.main.async { [weak self] in
+                    if (self!.routeFinishView == nil){
+                        self!.routeFinishView = UIView()
+                    }
+                    if (self!.routeDistanceLabel == nil){
+                        self!.routeDistanceLabel = UILabel()
+                    }
+                    let placemarkSize = self!.placemarkSize(
+                        forDistance: CGFloat(distance),
+                        closeDistance: 10.0,
+                        farDistance: 25.0,
+                        closeDistanceSize: 100.0,
+                        farDistanceSize: 50.0
+                    )
+                    let screenMidToProjectionLine = CGLine(point1: UIScreen.main.bounds.mid, point2: projectionPoint)
+                    let distanceAttrStr = NSMutableAttributedString(string: "\(distance) м", attributes: [
+                        .strokeColor : UIColor.black,
+                        .foregroundColor : UIColor.white,
+                        .strokeWidth : -1.0,
+                        .font : UIFont.boldSystemFont(ofSize: 32.0)
+                        ])
+                    
+                    let size = distanceAttrStr.boundingSize(width: .greatestFiniteMagnitude)
+                    
+                    self!.routeFinishView!.isHidden = !(positionInPOV.z < 0 && screenMidToProjectionLine.intersection(withRect: UIScreen.main.bounds) == nil)
+                    self!.routeDistanceLabel!.isHidden = self!.routeFinishView!.isHidden
+                    self!.routeFinishView!.center = projectionPoint
+                    
+                    self!.routeFinishView!.bounds.size.width = placemarkSize
+                    self!.routeFinishView!.bounds.size.height = placemarkSize
+                    self!.routeFinishView!.layer.cornerRadius = placemarkSize / 2
+                    
+                    self!.routeDistanceLabel!.attributedText = distanceAttrStr
+                    self!.routeDistanceLabel!.center = projectionPoint
+                    self!.routeDistanceLabel!.bounds.size = size
+                    self!.routeDistanceLabel!.transform = CGAffineTransform(rotationAngle: CGFloat(rotationAngle - .pi))
+                }
+            }
+        }
+        catch let ex {
+            print("Exception:", ex)
         }
     }
     

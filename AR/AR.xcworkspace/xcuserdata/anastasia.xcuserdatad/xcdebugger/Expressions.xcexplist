@@ -82,6 +82,23 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in closure #1 in MapViewController.renderer(_:didRenderScene:atTime:):MapViewController+Extension+AR.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = " self!.routeFinishView == nil">
+            </PersistentString>
+            <PersistentString
+               value = "projectionPoint.x">
+            </PersistentString>
+            <PersistentString
+               value = "UIScreen.main.bounds">
+            </PersistentString>
+            <PersistentString
+               value = "screenMidToProjectionLine.intersection(withRect: UIScreen.main.bounds) ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.viewDidLoad():MapViewController.swift">
       </ContextState>
       <ContextState
@@ -188,6 +205,17 @@
       </ContextState>
       <ContextState
          contextName = "NavigationService.setNavigation(forRoute:):NavigationService.swift">
+      </ContextState>
+      <ContextState
+         contextName = "specialized closure #1 in MapViewController.renderer(_:didRenderScene:atTime:):MapViewController+Extension+AR.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "routeFinishView.bounds.size ">
+            </PersistentString>
+            <PersistentString
+               value = "routeFinishView.bounds">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "NavigationService.setExtraNodes(nodes:objects:):NavigationService.swift">
