@@ -17,16 +17,20 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var intro: UISegmentedControl!
     @IBOutlet weak var go: UIButton!
+    @IBOutlet var viewWrapper: UIStackView!
     
     var isSignIn:Bool = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround() // do not show keyboard when tapped
         self.navigationController?.navigationBar.isHidden = true; // hide the nabigation bar
-        if Auth.auth().currentUser != nil { // check if user already logged in
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            if Auth.auth().currentUser != nil { // check if user already logged in
                 self.performSegue(withIdentifier: "LogIn", sender: self)
+            }else{
+                self.viewWrapper.isHidden = false
             }
         }
     }

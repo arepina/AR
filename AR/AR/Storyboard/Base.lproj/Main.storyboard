@@ -307,7 +307,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zls-7F-RrS">
+                            <containerView opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zls-7F-RrS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="520"/>
                                 <connections>
                                     <segue destination="3zz-r4-vXo" kind="embed" id="9uf-4Q-ROg"/>
@@ -608,7 +608,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="5Zg-9u-bmO"/>
         <segue reference="Ucc-gb-1ch"/>
-        <segue reference="vJn-Wt-pSF"/>
+        <segue reference="wCP-LB-omB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.91561114789999998" green="0.22472155090000001" blue="0.22349524500000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
