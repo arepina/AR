@@ -100,6 +100,7 @@
                         <outlet property="go" destination="ykT-wy-Yi0" id="i71-OX-yvf"/>
                         <outlet property="intro" destination="Cz2-EQ-3N9" id="5jZ-Hn-Aqo"/>
                         <outlet property="password" destination="CQd-bX-98d" id="NK2-Tq-qTD"/>
+                        <outlet property="viewWrapper" destination="0oZ-W2-Nkj" id="3U5-Tv-1rf"/>
                         <segue destination="KNE-n8-vaD" kind="show" identifier="LogIn" id="sa0-gb-v3H"/>
                     </connections>
                 </viewController>

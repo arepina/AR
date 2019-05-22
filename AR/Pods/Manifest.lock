@@ -111,6 +111,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
+  - PXGoogleDirections (1.6)
   - SideMenu (5.0.3)
   - SwiftExceptionCatcher (1.2)
   - SwiftLocation (3.2.3):
@@ -126,6 +127,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Firestore
+  - PXGoogleDirections
   - SideMenu
   - SwiftExceptionCatcher (from `https://github.com/RedRoma/SwiftExceptionCatcher.git`)
   - SwiftLocation (~> 3.2.3)
@@ -153,6 +155,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - PXGoogleDirections
     - SideMenu
     - SwiftLocation
     - SwiftSpinner
@@ -188,12 +191,13 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  PXGoogleDirections: e0810665aa328396856de3192706f60af434c6fd
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
   SwiftExceptionCatcher: 2d5b5f61c52c7cd6df2a7c8c60c864be791f78bb
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 596a2d1db30f3a07768947dc3f78f5a745ed541b
+PODFILE CHECKSUM: a52c05ba85f92f81ebac5e7ab3e6ac4ac483e8fa
 
 COCOAPODS: 1.6.1

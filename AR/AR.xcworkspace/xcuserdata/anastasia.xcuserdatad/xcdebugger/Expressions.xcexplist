@@ -45,10 +45,27 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapViewController.renderer(_:didRenderScene:atTime:):MapViewController.swift">
+         contextName = "closure #1 in closure #1 in MapViewController.renderer(_:didRenderScene:atTime:):MapViewController+Extension+AR.swift">
          <PersistentStrings>
             <PersistentString
-               value = "routeFinishNode">
+               value = " self!.routeFinishView == nil">
+            </PersistentString>
+            <PersistentString
+               value = "projectionPoint.x">
+            </PersistentString>
+            <PersistentString
+               value = "UIScreen.main.bounds">
+            </PersistentString>
+            <PersistentString
+               value = "screenMidToProjectionLine.intersection(withRect: UIScreen.main.bounds) ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NavigationService.calculateSteps(destination:request:completion:):NavigationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "destination.coordinates">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -82,24 +99,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in MapViewController.renderer(_:didRenderScene:atTime:):MapViewController+Extension+AR.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = " self!.routeFinishView == nil">
-            </PersistentString>
-            <PersistentString
-               value = "projectionPoint.x">
-            </PersistentString>
-            <PersistentString
-               value = "UIScreen.main.bounds">
-            </PersistentString>
-            <PersistentString
-               value = "screenMidToProjectionLine.intersection(withRect: UIScreen.main.bounds) ">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "MapViewController.viewDidLoad():MapViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "MapViewController.viewDidLoad():MapViewController.swift">
+         contextName = "MapViewController.renderer(_:didRenderScene:atTime:):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "routeFinishNode">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MapViewController.calculateLeg(for:and:):MapViewController.swift">
@@ -250,6 +258,24 @@
          <PersistentStrings>
             <PersistentString
                value = "response.routes ">
+            </PersistentString>
+            <PersistentString
+               value = "routes">
+            </PersistentString>
+            <PersistentString
+               value = "routes[0].legs[0]">
+            </PersistentString>
+            <PersistentString
+               value = "finalRoute">
+            </PersistentString>
+            <PersistentString
+               value = "route.steps">
+            </PersistentString>
+            <PersistentString
+               value = "error.debugDescription">
+            </PersistentString>
+            <PersistentString
+               value = "route">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

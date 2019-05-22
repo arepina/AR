@@ -10,23 +10,49 @@ import Foundation
 import CoreLocation
 import SceneKit
 import ARKit
+import PXGoogleDirections
 import MapKit
+import SwiftLocation
+
+class NavigatorHolder{
+    var steps : [CLLocationCoordinate2D] = []
+    var instructions : [PointOfInterest] = []
+    
+    init(steps : [CLLocationCoordinate2D], instructions : [PointOfInterest]) {
+        self.steps = steps
+        self.instructions = instructions
+    }
+}
 
 class NavigationService{
     var updatedLocations: [CLLocation] = [] // store all the new location updates from Locator.subscribePosition
     
-    func calculateSteps(destination : Route, request: MKDirections.Request, completion: @escaping (MKRoute) -> Void){
+    //for working properly turn the VPN on
+    func calculateSteps(destination : Route, request: MKDirections.Request, completion: @escaping (_ route : NavigatorHolder) -> Void){
         request.destination = MKMapItem.init(placemark: MKPlacemark(coordinate: destination.coordinates!))
         request.source = MKMapItem.forCurrentLocation()
-        request.requestsAlternateRoutes = false
         request.transportType = .walking
         let directions = MKDirections(request: request)
         directions.calculate { response, error in
             if error != nil {
-                print("Error getting directions")
+                print("Error getting directions ", error.debugDescription)
             } else {
                 guard let response = response else { return }
-                completion(response.routes[0])
+                var steps: [CLLocationCoordinate2D] = []
+                var instructions : [PointOfInterest] = []
+                let route : MKRoute = response.routes[0]
+                for stepIndex in 0..<route.polyline.pointCount {
+                    let step: MKMapPoint = route.polyline.points()[stepIndex]
+                    steps.append(step.coordinate)
+                }
+                for stepIndex in 0..<route.steps.count{
+                    if route.steps[stepIndex].instructions != ""{
+                        let poi : PointOfInterest = PointOfInterest(coordinate: route.steps[stepIndex].getLocation().coordinate, title: route.steps[stepIndex].instructions, color: .blue, image : UIImage())
+                        instructions.append(poi)
+                    }
+                }
+                let finalRoute : NavigatorHolder = NavigatorHolder(steps: steps, instructions: instructions)
+                completion(finalRoute)
             }
         }
     }

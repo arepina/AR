@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BAA136DA5D28C02A832D646AFFC2C433"
+               BlueprintIdentifier = "D6779F4EC1405D6D571F3A800F892F81"
                BuildableName = "SwiftExceptionCatcher.framework"
                BlueprintName = "SwiftExceptionCatcher"
                ReferencedContainer = "container:Pods.xcodeproj">

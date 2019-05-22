@@ -84,21 +84,13 @@ extension MapViewController {
         refresh.isHidden = false
         let request = MKDirections.Request()
         navigationService.calculateSteps(destination: destination, request: request) { route in
-            var steps: [CLLocationCoordinate2D] = []
-            for stepIndex in 0..<route.polyline.pointCount {
-                let step: MKMapPoint = route.polyline.points()[stepIndex]
-                steps.append(step.coordinate)
-            }
             //Map steps
-            for stepIndex in 0..<route.steps.count{
-                if route.steps[stepIndex].instructions != ""{
-                    let poi : PointOfInterest = PointOfInterest(coordinate: route.steps[stepIndex].getLocation().coordinate, title: route.steps[stepIndex].instructions, color: .blue, image : UIImage())
-                    self.poiHolder.annotationInstructions.append(poi)
-                }
+            for index in 0..<route.instructions.count{
+                self.poiHolder.annotationInstructions.append(route.instructions[index])
             }
             self.navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
             //AR steps
-            let route = steps
+            let route = route.steps
                 .map { self.navigationService.convert(scnView: self.sceneView, coordinate: $0) } // convert all the coordinates to the AR suitable
                 .compactMap { $0 } // remove the nils
                 .map { CGPoint(position: $0) } // combine the points
