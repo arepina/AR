@@ -24,6 +24,14 @@ extension MapViewController: MKMapViewDelegate {
         map.showsUserLocation = true
         map.addGestureRecognizer(pressMap)
         map.delegate = self
+        map.showsScale = true
+        map.showsCompass = false
+        let compassButton : MKCompassButton = MKCompassButton(mapView: map)
+        compassButton.compassVisibility = .adaptive
+        map.addSubview(compassButton)
+        compassButton.translatesAutoresizingMaskIntoConstraints = false
+        compassButton.trailingAnchor.constraint(equalTo: map.trailingAnchor, constant: -self.view.frame.size.width + 50).isActive = true
+        compassButton.topAnchor.constraint(equalTo: map.topAnchor, constant: 40).isActive = true
     }
     
     @objc func onMapPress(gesture: UIGestureRecognizer) {
