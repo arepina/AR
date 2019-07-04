@@ -123,8 +123,7 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
                 let lon:Double = favoriteRoute.coordinates!.longitude
                 destination = CLLocation(latitude: lat, longitude: lon)
                 clear()
-                drawRouteOnMap(destination: favoriteRoute)
-                drawRouteInAR(destination: favoriteRoute)
+                chooseNavigationType(dest: favoriteRoute)
                 favoriteRoute = nil
             }
         } else {

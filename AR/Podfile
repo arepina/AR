@@ -19,5 +19,6 @@ pod 'SwiftLocation', '~> 3.2.3'
 pod 'ARCL'
 pod 'SwiftExceptionCatcher', :git => 'https://github.com/RedRoma/SwiftExceptionCatcher.git'
 pod 'PXGoogleDirections'
+pod 'PopupDialog', '~> 1.1'
 
 end

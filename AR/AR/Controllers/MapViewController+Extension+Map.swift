@@ -14,6 +14,7 @@ import ARKit
 import MapKit
 import SwiftLocation
 import Crashlytics
+import PopupDialog
 
 extension MapViewController: MKMapViewDelegate {
     func initMap(){
@@ -52,26 +53,45 @@ extension MapViewController: MKMapViewDelegate {
             CLSLogv("from: %@", getVaList([from]))
             CLSLogv("to: %@", getVaList([to]))
             destination = CLLocation(latitude: lat, longitude: lon)
-            drawRouteOnMap(destination: dest)
-            drawRouteInAR(destination: dest)
+            chooseNavigationType(dest: dest)
         }else{
             showToast(message: "No Internet connection!", isMenu: false)
         }
     }
-
+    
+    func chooseNavigationType(dest : Route ){
+        let popup = PopupDialog(title: nil, message: nil, image: nil)
+        let buttonOne = DefaultButton(title: "Walking") {
+            self.drawRouteOnMap(destination: dest, type: MKDirectionsTransportType.walking)
+            self.drawRouteInAR(destination: dest)
+        }
+        let buttonTwo = DefaultButton(title: "Public transport") {
+            self.drawRouteOnMap(destination: dest, type: MKDirectionsTransportType.transit)
+            self.drawRouteInAR(destination: dest)
+        }
+        let buttonThree = DefaultButton(title: "Driving") {
+            self.drawRouteOnMap(destination: dest, type: MKDirectionsTransportType.automobile)
+            self.drawRouteInAR(destination: dest)
+        }
+        popup.addButtons([buttonOne, buttonTwo, buttonThree])
+        self.present(popup, animated: true, completion: nil)
+        let vc = popup.viewController as! PopupDialogDefaultViewController
+        vc.titleText = "Choose the navigation type"
+    }
+    
     
     @IBAction func clearMap(_ sender: Any) {
         clear()
     }
     
-    func drawRouteOnMap(destination : Route){
+    func drawRouteOnMap(destination : Route, type: MKDirectionsTransportType){
         map.setRegion(MKCoordinateRegion(center: destination.coordinates!, span: MKCoordinateSpan(latitudeDelta: 0.05,longitudeDelta: 0.05)), animated: true) // center the image
         let directionsRequest = MKDirections.Request()
         let fromMark = MKPlacemark(coordinate: SwiftLocation.Locator.currentLocation!.coordinate, addressDictionary: nil)
         let toMark = MKPlacemark(coordinate: destination.coordinates!, addressDictionary: nil)
         directionsRequest.source = MKMapItem(placemark: fromMark) // start point
         directionsRequest.destination = MKMapItem(placemark: toMark) // end point
-        directionsRequest.transportType = MKDirectionsTransportType.walking // on foot
+        directionsRequest.transportType = type
         MKDirections(request: directionsRequest).calculate(completionHandler: {
             response, error in
             if error == nil {

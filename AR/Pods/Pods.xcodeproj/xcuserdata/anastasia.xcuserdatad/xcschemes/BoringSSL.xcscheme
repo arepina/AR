@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5393BE21DF26FC154506D23DDA69027B"
+               BlueprintIdentifier = "33ACDD1BE9C19029E1F23CD6C26F3608"
                BuildableName = "openssl.framework"
                BlueprintName = "BoringSSL"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5393BE21DF26FC154506D23DDA69027B"
+            BlueprintIdentifier = "33ACDD1BE9C19029E1F23CD6C26F3608"
             BuildableName = "openssl.framework"
             BlueprintName = "BoringSSL"
             ReferencedContainer = "container:Pods.xcodeproj">

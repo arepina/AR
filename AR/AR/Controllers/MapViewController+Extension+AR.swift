@@ -58,8 +58,7 @@ extension MapViewController {
             let lon:Double = coordinate.longitude
             let dest : Route = Route(p: "", c: String(lat) + ";" + String(lon), k: "")
             destination = CLLocation(latitude: lat, longitude: lon)
-            drawRouteOnMap(destination: dest)
-            drawRouteInAR(destination: dest)
+            chooseNavigationType(dest: dest)
         }else{
             showToast(message: "No Internet connection!", isMenu: false)
         }
