@@ -1,0 +1,75 @@
+
+/* Class = "UILabel"; text = "AR NAVIGATION  APP"; ObjectID = "1bd-Ia-CqG"; */
+"1bd-Ia-CqG.text" = "AR NAVIGATION  APP";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "9Cb-GX-Ey1"; */
+"9Cb-GX-Ey1.placeholder" = "email";
+
+/* Class = "UIViewController"; title = "LogIn"; ObjectID = "BV1-FR-VrT"; */
+"BV1-FR-VrT.title" = "LogIn";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "CQd-bX-98d"; */
+"CQd-bX-98d.placeholder" = "пароль";
+
+/* Class = "UISegmentedControl"; Cz2-EQ-3N9.segmentTitles[0] = "Sign In"; ObjectID = "Cz2-EQ-3N9"; */
+"Cz2-EQ-3N9.segmentTitles[0]" = "Вход";
+
+/* Class = "UISegmentedControl"; Cz2-EQ-3N9.segmentTitles[1] = "Sign up"; ObjectID = "Cz2-EQ-3N9"; */
+"Cz2-EQ-3N9.segmentTitles[1]" = "Регистрация";
+
+/* Class = "UIViewController"; title = "Settings"; ObjectID = "Ee4-Pb-Lkp"; */
+"Ee4-Pb-Lkp.title" = "Настройки";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "FQs-dc-nr6"; */
+"FQs-dc-nr6.title" = " ";
+
+/* Class = "UILabel"; text = "The AR navigation app is done by Anastasia Repina © as a part of the course work. In case of any questions you can contact repina.developer@gmail.com 🆘.   ▪️ The application requires stable Internet connection 📶 and the geolocation📍 being on. ▪️ You can build a route by tapping the destination point on the map or via the search. After the request the route will be shown both on the map in the AR mode.  ▪️To clear all the current settings press the red cross ❌  on the right.  ▪️ To see the currect location press the user's icon🙎🏻‍♂️ on the right.  ▪️ To add the current location or the builded route to the favorites press the ❤️ on the right. ▪️ To see the nearest theaters and museums in Moscow click 🏛 and 🎭 buttons on the right. ▪️ The menu can be opened by pressing the ⌸ in the top right corner. ▪️The settings page ⚙️shows how to turn the geolocation on as well as provide opportunity to log out and send the email to the developer. ▪️This page just provides information about all the application😀. "; ObjectID = "Gwz-C9-V25"; */
+"Gwz-C9-V25.text" = "Приложение \"AR navigation\" разработано Репиной Анастасией в качестве курсовой работы. В случае наличия вопросв Вы можете написать repina.developer@gmail.com 🆘.   ▪️ Приложению требуется наличие интернет соединения 📶 и включенной геолокации📍. ▪️ Вы можете построить маршрут, выбрав пункт назначения на карте или с помощью поиска. После запроса маршрут будет показан как на карте, так и в режиме AR.  ▪️ Для сброса всех текущих настроек нажмите красный крестик ❌ справа.  ▪️ Чтобы увидеть точное местоположение, нажмите значок пользователя 🙎🏻‍♂️ справа.  ▪️ Чтобы добавить текущее местоположение или построенный маршрут в избранное, нажмите ❤️ справа. ▪️ Чтобы увидеть ближайшие театры и музеи в Москве, нажмите кнопки 🏛 и 🎭 справа. ▪️ Меню можно открыть, нажав ⌸ в правом верхнем углу . ▪️ На странице настроек ⚙️ показано, как включить геолокацию, а также представлена возможность выйти из аккаунта и отправить электронное письмо разработчику. ▪️ Эта страница просто предоставляет информацию обо всех приложениях😀. ";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "I3P-Zc-Kma"; */
+"I3P-Zc-Kma.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "McL-wD-HGP"; */
+"McL-wD-HGP.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Routes"; ObjectID = "Ngc-NX-vMe"; */
+"Ngc-NX-vMe.title" = "Маршруты";
+
+/* Class = "UIViewController"; title = "Map"; ObjectID = "RhS-nh-a7z"; */
+"RhS-nh-a7z.title" = "Карта";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "RlF-Ym-del"; */
+"RlF-Ym-del.title" = "Настройки";
+
+/* Class = "UIButton"; normalTitle = "Log out"; ObjectID = "Spa-Os-9FS"; */
+"Spa-Os-9FS.normalTitle" = "Выход из аккаунта";
+
+/* Class = "UITableViewController"; title = "Routes"; ObjectID = "W3L-WY-07b"; */
+"W3L-WY-07b.title" = "Маршруты";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "goM-5H-sAw"; */
+"goM-5H-sAw.title" = " ";
+
+/* Class = "UILabel"; text = "AR  NAVIGATION  APP"; ObjectID = "jx6-GM-y3t"; */
+"jx6-GM-y3t.text" = "AR  NAVIGATION  APP";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "kCb-UF-eNy"; */
+"kCb-UF-eNy.title" = " ";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "kcK-Md-XDX"; */
+"kcK-Md-XDX.title" = "Настройки";
+
+/* Class = "UILabel"; text = "Turn on geolocation in settings for correct work of the app"; ObjectID = "qGa-mj-uGg"; */
+"qGa-mj-uGg.text" = "Для корректной работы приложения требуется включить геоданные";
+
+/* Class = "UIButton"; normalTitle = "Contact developer"; ObjectID = "rOb-bW-Sh2"; */
+"rOb-bW-Sh2.normalTitle" = "Связаться с разработчиком";
+
+/* Class = "UILabel"; text = "Place"; ObjectID = "xeK-Lf-tWV"; */
+"xeK-Lf-tWV.text" = "Место";
+
+/* Class = "UIViewController"; title = "Info"; ObjectID = "xme-iu-LpZ"; */
+"xme-iu-LpZ.title" = "Информация";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "ykT-wy-Yi0"; */
+"ykT-wy-Yi0.normalTitle" = "Вход";

@@ -1,0 +1,24 @@
+/* 
+  Dictionary.strings
+  AR
+
+  Created by Анастасия Репина on 05/07/2019.
+  Copyright © 2019 Anastasia. All rights reserved.
+*/
+
+ROUTES = "Routes";
+SETTINGS = "Settings";
+INFO = "Info";
+SEARCH = "Search...";
+LOADING = "Loading...";
+CHOOSE_THE_NAVIGATION_TYPE = "Choose the navigation type";
+WALKING = "Walking";
+PUBLIC = "Public transport";
+DRIVING = "Driving";
+ADD_CURRENT_TO_FAVORITE = "Add your current location to favorite?";
+ADD_DESTINATION_TO_FAVORITE = "Add the destination location to favorite?";
+ENTER_THE_NAME = "Enter the name for a favorite place";
+DISTANCE = "Distance:";
+DURATION = "Duration:";
+METRES = "m";
+MINUTES = "min";

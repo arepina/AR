@@ -11,7 +11,9 @@ import SideMenu
 import Firebase
 
 class SideMenuTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
-    let menu = ["Routes", "Settings", "Info"]
+    let menu = [NSLocalizedString("ROUTES", comment:""),
+                NSLocalizedString("SETTINGS", comment:""),
+                NSLocalizedString("INFO", comment:"")]
     @IBOutlet var table: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {

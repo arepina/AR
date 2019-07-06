@@ -21,15 +21,15 @@ extension MapViewController{
             var message : String
             var coordinates : CLLocationCoordinate2D
             if myRoute != nil{ // we need to add the destination location to favorite
-                message = "Add the destination location to favorite?"
+                message = NSLocalizedString("ADD_DESTINATION_TO_FAVORITE", comment:"")
                 coordinates = destination.coordinate
             }else{ // we need to add the user's location to favorite
-                message = "Add your current location to favorite?"
+                message = NSLocalizedString("ADD_CURRENT_TO_FAVORITE", comment:"")
                 coordinates = SwiftLocation.Locator.currentLocation!.coordinate
             }
             let refreshAlert = UIAlertController(title: "❤️", message: message, preferredStyle: UIAlertController.Style.alert)
             refreshAlert.addTextField { (textField) in
-                textField.placeholder = "Enter the name for a favorite place"
+                textField.placeholder = NSLocalizedString("ENTER_THE_NAME", comment:"")
             }
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 let placeName = refreshAlert.textFields![0].text! as String

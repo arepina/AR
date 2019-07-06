@@ -123,7 +123,7 @@
                                 <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                             </mapView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7NS-B3-tgp">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="-24" width="375" height="44"/>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QOB-De-7Qt">
                                 <rect key="frame" x="343" y="376" width="32" height="217"/>
@@ -539,7 +539,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwz-C9-V25">
                                         <rect key="frame" x="10" y="10" width="355" height="647"/>
-                                        <string key="text">The AR navigation app is done by Anastasia Repina © as a part of the course work. In case of any questions you can contact repina.developer@gmail.com 🆘.   ▪️ The application requires stable Internet connection 📶 and the geolocation📍 being on. ▪️ You can build a route by tapping the destination point on the map or via the search. After the request the route will be shown both on the map in in the AR mode.  ▪️To clear all the current settings press the red cross ❌  on the right.  ▪️ To see the currect location press the user's icon🙎🏻‍♂️ on the right.  ▪️ To add the current location or the builded route to the favorites press the ❤️ on the right. ▪️ To see the nearest theaters and museums in Moscow click 🏛 and 🎭 buttons on the right. ▪️ The menu can be opened by pressing the ⌸ in the top right corner. ▪️The settings page ⚙️shows how to turn the geolocation on as well as provide opportunity to log out and send the email to the developer. ▪️This page just provides information about all the application😀. </string>
+                                        <mutableString key="text">The AR navigation app is done by Anastasia Repina © as a part of the course work. In case of any questions you can contact repina.developer@gmail.com 🆘.   ▪️ The application requires stable Internet connection 📶 and the geolocation📍 being on. ▪️ You can build a route by tapping the destination point on the map or via the search. After the request the route will be shown both on the map in the AR mode.  ▪️To clear all the current settings press the red cross ❌  on the right.  ▪️ To see the currect location press the user's icon🙎🏻‍♂️ on the right.  ▪️ To add the current location or the builded route to the favorites press the ❤️ on the right. ▪️ To see the nearest theaters and museums in Moscow click 🏛 and 🎭 buttons on the right. ▪️ The menu can be opened by pressing the ⌸ in the top right corner. ▪️The settings page ⚙️shows how to turn the geolocation on as well as provide opportunity to log out and send the email to the developer. ▪️This page just provides information about all the application😀. </mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -625,7 +625,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5Zg-9u-bmO"/>
-        <segue reference="Tm4-AL-w9e"/>
+        <segue reference="Ucc-gb-1ch"/>
         <segue reference="wCP-LB-omB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.91561114789999998" green="0.22472155090000001" blue="0.22349524500000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -21,7 +21,7 @@ class RoutesViewController : UITableViewController{
         self.table.rowHeight = 66
         self.table.separatorColor = UIColor.red
         navigationItem.rightBarButtonItem = editButtonItem
-        SwiftSpinner.show("Loading...")
+        SwiftSpinner.show(NSLocalizedString("LOADING", comment:""))
         SwiftSpinner.setTitleColor(UIColor(red: 233.0/255, green: 57.0/255, blue: 57.0/255, alpha: 1.0)) 
         FirebaseService.getAllRoutes(userID: (Auth.auth().currentUser?.uid)!, callback: {(routes)-> (Void) in
             self.routes = routes

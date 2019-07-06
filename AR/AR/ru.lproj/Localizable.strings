@@ -1,0 +1,24 @@
+/* 
+  Dictionary.strings
+  AR
+
+  Created by Анастасия Репина on 05/07/2019.
+  Copyright © 2019 Anastasia. All rights reserved.
+*/
+
+ROUTES = "Маршруты";
+SETTINGS = "Настройки";
+INFO = "Информация";
+SEARCH = "Поиск...";
+LOADING = "Загрузка...";
+CHOOSE_THE_NAVIGATION_TYPE = "Выберите тип навигации";
+WALKING = "Пешком";
+PUBLIC = "Общественный транспорт";
+DRIVING = "Машина";
+ADD_CURRENT_TO_FAVORITE = "Добавить текущее местоположение в избранное?";
+ADD_DESTINATION_TO_FAVORITE = "Добавить конечную точку маршрута в избранное?";
+ENTER_THE_NAME = "Введите название места";
+DISTANCE = "Дистанция:";
+DURATION = "Время:";
+METRES = "м";
+MINUTES = "мин";

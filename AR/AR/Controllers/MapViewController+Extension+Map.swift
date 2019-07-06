@@ -61,22 +61,22 @@ extension MapViewController: MKMapViewDelegate {
     
     func chooseNavigationType(dest : Route ){
         let popup = PopupDialog(title: nil, message: nil, image: nil)
-        let buttonOne = DefaultButton(title: "Walking") {
+        let buttonOne = DefaultButton(title: NSLocalizedString("WALKING", comment:"")) {
             self.drawRouteOnMap(destination: dest, type: MKDirectionsTransportType.walking)
             self.drawRouteInAR(destination: dest)
         }
-        let buttonTwo = DefaultButton(title: "Public transport") {
+        let buttonTwo = DefaultButton(title: NSLocalizedString("PUBLIC", comment:"")) {
             self.drawRouteOnMap(destination: dest, type: MKDirectionsTransportType.transit)
             self.drawRouteInAR(destination: dest)
         }
-        let buttonThree = DefaultButton(title: "Driving") {
+        let buttonThree = DefaultButton(title: NSLocalizedString("DRIVING", comment:"")) {
             self.drawRouteOnMap(destination: dest, type: MKDirectionsTransportType.automobile)
             self.drawRouteInAR(destination: dest)
         }
         popup.addButtons([buttonOne, buttonTwo, buttonThree])
         self.present(popup, animated: true, completion: nil)
         let vc = popup.viewController as! PopupDialogDefaultViewController
-        vc.titleText = "Choose the navigation type"
+        vc.titleText = NSLocalizedString("CHOOSE_THE_NAVIGATION_TYPE", comment:"")
     }
     
     
@@ -97,7 +97,12 @@ extension MapViewController: MKMapViewDelegate {
             if error == nil {
                 self.myRoute = response!.routes[0] as MKRoute // set the first of found routes
                 self.map.addOverlay(self.myRoute.polyline) // draw route on the map
-                self.showToast(message: "Distance: \(self.myRoute.distance)m Duration: \(round(self.myRoute.expectedTravelTime / 60))min", isMenu: false)
+                let msg = NSLocalizedString("DISTANCE", comment:"") + "\(self.myRoute.distance)" +
+                NSLocalizedString("METRES", comment:"") +
+                " " +
+                NSLocalizedString("DURATION", comment:"") + "\(round(self.myRoute.expectedTravelTime / 60))" +
+                NSLocalizedString("MINUTES", comment:"")
+                self.showToast(message: msg, isMenu: false)
             }
         })
     }

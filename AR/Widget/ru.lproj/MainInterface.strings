@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Museum"; ObjectID = "5y4-c9-Y74"; */
+"5y4-c9-Y74.text" = "Музеи";
+
+/* Class = "UILabel"; text = "Search"; ObjectID = "Fff-0F-IbS"; */
+"Fff-0F-IbS.text" = "Поиск";
+
+/* Class = "UILabel"; text = "Favorite"; ObjectID = "Gti-jf-EYz"; */
+"Gti-jf-EYz.text" = "Избранное";
+
+/* Class = "UILabel"; text = "Theater"; ObjectID = "OIH-H5-afJ"; */
+"OIH-H5-afJ.text" = "Театры";
