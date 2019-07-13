@@ -33,6 +33,7 @@ class MapViewController :  UIViewController, ARSCNViewDelegate, ARSessionDelegat
     var destination : CLLocation! // destination
     var poiHolder : PointOfInterestHolder! // POIs
     var isFirst : Bool! // is first run of the location detector
+    var instructions : [AR.PointOfInterest]! // instructions for audio
     
     var routeNodes: [SCNNode] = [] {
         didSet {

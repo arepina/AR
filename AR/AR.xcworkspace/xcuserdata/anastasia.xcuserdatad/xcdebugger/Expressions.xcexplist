@@ -110,6 +110,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MapViewController.renderer(_:didRenderScene:atTime:):MapViewController+Extension+AR.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mainNodeCoordinate.distance(from: SwiftLocation.Locator.currentLocation!)">
+            </PersistentString>
+            <PersistentString
+               value = "self.instructions">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.calculateLeg(for:and:):MapViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -257,10 +268,13 @@
          contextName = "closure #1 in NavigationService.calculateSteps(destination:request:completion:):NavigationService.swift">
          <PersistentStrings>
             <PersistentString
-               value = "response.routes ">
+               value = "route.steps">
             </PersistentString>
             <PersistentString
-               value = "routes">
+               value = "error.debugDescription">
+            </PersistentString>
+            <PersistentString
+               value = "route">
             </PersistentString>
             <PersistentString
                value = "routes[0].legs[0]">
@@ -269,13 +283,10 @@
                value = "finalRoute">
             </PersistentString>
             <PersistentString
-               value = "route.steps">
+               value = "routes">
             </PersistentString>
             <PersistentString
-               value = "error.debugDescription">
-            </PersistentString>
-            <PersistentString
-               value = "route">
+               value = "response.routes ">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -292,6 +303,9 @@
                value = "legs">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in MapViewController.drawRouteInAR(destination:):MapViewController+Extension+AR.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in MapViewController.drawRouteOnMap(destination:):MapViewController.swift">

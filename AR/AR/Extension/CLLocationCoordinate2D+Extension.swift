@@ -47,7 +47,7 @@ extension CLLocationCoordinate2D {
         let bearing = self.bearing(location: CLLocation(latitude: dLat, longitude: dLon))
         _ = dLat * cos(bearing)
         _ = dLon * sin(bearing)
-        print(bearing,coordinate.latitude > position.latitude ? 1 : -1,  longitude > position.longitude ? -1 : 1)
+        //print(bearing,coordinate.latitude > position.latitude ? 1 : -1,  longitude > position.longitude ? -1 : 1)
         
         return CLLocation(latitude: dLat, longitude: dLon)
     }

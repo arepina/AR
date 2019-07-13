@@ -16,6 +16,7 @@ import SwiftLocation
 import ARCL
 import Crashlytics
 import SwiftExceptionCatcher
+import AVFoundation
 
 extension MapViewController {
     func initAR(){
@@ -88,6 +89,7 @@ extension MapViewController {
                 self.poiHolder.annotationInstructions.append(route.instructions[index])
             }
             self.navigationService.updatedLocations.append(SwiftLocation.Locator.currentLocation!)
+            self.instructions = route.instructions
             //AR steps
             let route = route.steps
                 .map { self.navigationService.convert(scnView: self.sceneView, coordinate: $0) } // convert all the coordinates to the AR suitable
@@ -132,7 +134,20 @@ extension MapViewController {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        let currentLocation = SwiftLocation.Locator.currentLocation
+        if self.instructions != nil{
+            for index in 0..<self.instructions.count{
+                let mainNode = self.instructions[index]
+                let mainNodeCoordinate: CLLocation = CLLocation(latitude: mainNode.coordinate.latitude, longitude: mainNode.coordinate.longitude)
+                print(mainNodeCoordinate.distance(from: SwiftLocation.Locator.currentLocation!))
+                if mainNodeCoordinate.distance(from: SwiftLocation.Locator.currentLocation!) <= 10{ // distance less then 10 metres
+                    let synth = AVSpeechSynthesizer()
+                    let myUtterance = AVSpeechUtterance(string: mainNode.title!)
+                    synth.speak(myUtterance)
+                    self.instructions.remove(at: index) //remove those which already been pronounsed
+                    break
+                }
+            }
+        }
         guard let finishLocation = destination else { return }
         guard let routeFinishNode = routeFinishNode else { return }
         guard let parent = routeFinishNode.parent else { return }
@@ -146,7 +161,7 @@ extension MapViewController {
         let annotationProjection = sceneView.projectPoint(annotationPositionInWorld)
         let annotationProjectionPoint = CGPoint(x: CGFloat(annotationProjection.x), y: CGFloat(annotationProjection.y))
         let rotationAngle = Vector.y.angle(with: (Vector(annotationProjectionPoint) - Vector(projectionPoint)))
-        var distance = round(currentLocation!.distance(from: finishLocation))
+        var distance = round(SwiftLocation.Locator.currentLocation!.distance(from: finishLocation))
         distance = distance.isNaN ? 0.0 : distance
         if(projectionPoint.x.isNaN){
             projectionPoint.x = 0
@@ -217,6 +232,13 @@ extension MapViewController {
             let size = closeDistanceSize + delta * percent
             return size
         }
+    }
+    
+    func textToSpeech(text: String){
+        let synth = AVSpeechSynthesizer()
+        let myUtterance = AVSpeechUtterance(string: text)
+        myUtterance.rate = 0.3
+        synth.speak(myUtterance)
     }
 }
 

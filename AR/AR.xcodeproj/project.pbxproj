@@ -23,6 +23,7 @@
 		5D264AEB21AEA53D00C9CE02 /* SettingsWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D264AEA21AEA53D00C9CE02 /* SettingsWalkthroughPageViewController.swift */; };
 		5D264AED21AEA87200C9CE02 /* SettingsWalkthoughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D264AEC21AEA87200C9CE02 /* SettingsWalkthoughContentViewController.swift */; };
 		5D27E77521A463FB002AA4B5 /* SetupRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27E77421A463FB002AA4B5 /* SetupRouteViewController.swift */; };
+		5D28362922D119DC00813DC5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D28362822D119DB00813DC5 /* AVFoundation.framework */; };
 		5D29215321AD9F2800836302 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29215221AD9F2800836302 /* Route.swift */; };
 		5D29BD5321B5812800C8D4B0 /* MKRouteStep+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD5221B5812800C8D4B0 /* MKRouteStep+Extension.swift */; };
 		5D29BD5521B5814B00C8D4B0 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D29BD5421B5814B00C8D4B0 /* PointOfInterest.swift */; };
@@ -103,6 +104,7 @@
 		5D264AEA21AEA53D00C9CE02 /* SettingsWalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		5D264AEC21AEA87200C9CE02 /* SettingsWalkthoughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWalkthoughContentViewController.swift; sourceTree = "<group>"; };
 		5D27E77421A463FB002AA4B5 /* SetupRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRouteViewController.swift; sourceTree = "<group>"; };
+		5D28362822D119DB00813DC5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5D29215221AD9F2800836302 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		5D29BD5221B5812800C8D4B0 /* MKRouteStep+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKRouteStep+Extension.swift"; sourceTree = "<group>"; };
 		5D29BD5421B5814B00C8D4B0 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D28362922D119DC00813DC5 /* AVFoundation.framework in Frameworks */,
 				6CC2103D64278BEE3BE48B53 /* Pods_AR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +310,7 @@
 		C76A4F54BC74EFCEB233CFDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D28362822D119DB00813DC5 /* AVFoundation.framework */,
 				073FD33836F3E58978A49137 /* Pods_AR.framework */,
 				5D36D95921FC82EA002E5345 /* NotificationCenter.framework */,
 			);
