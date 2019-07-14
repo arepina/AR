@@ -115,7 +115,6 @@ extension MapViewController {
     func finishInfo(route : [CGPoint]){
         self.routeFinishNode = SCNNode()
         self.routeFinishNode!.position = route.last!.positionInAR
-        
         self.routeFinishView = UIView()
         let imageName = "finish"
         let image = UIImage(named: imageName)
